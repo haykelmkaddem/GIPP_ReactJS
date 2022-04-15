@@ -1,0 +1,38 @@
+.filter-header{
+    background-color: #0e204d;
+    height: 50px;
+    border-radius:15px;
+    color:white;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.filter-content{
+    margin-top: 20px;
+    border-radius:15px;
+    border: 0.1px solid gray;
+    font-size: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    color:#0e204d;
+    
+}
+.slider-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    margin-top: -15px;
+}
+.checklist-marketplace{
+    margin-left: 15px;
+}
+.categories{
+    margin-top: 20px;
+}
