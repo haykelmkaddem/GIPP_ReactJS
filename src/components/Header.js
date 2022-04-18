@@ -184,16 +184,18 @@ const Header = () => {
                           </a>
                           <ul className="mega-submenu">
                             <li>
-                              <a href="#"> Settings</a>
+                              <NavLink to="/settings"> Settings</NavLink>
                             </li>
                             <li>
-                              <a href="#">Mes Commandes</a>
+                              <NavLink to="/mesCommandes">
+                                Mes Commandes
+                              </NavLink>
                             </li>
                             <li>
-                              <a href="#"> Panier </a>
+                              <NavLink to="/cart"> Panier </NavLink>
                             </li>
                             <li>
-                              <a href="#"> Mes Salons </a>
+                              <NavLink to="/mesSalons"> Mes Salons </NavLink>
                             </li>
                             <li>
                               <a href="#"> Déconnexion </a>

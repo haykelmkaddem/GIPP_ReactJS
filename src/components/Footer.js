@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="footer widget-footer ttm-bgcolor-darkgrey ttm-textcolor-white clearfix">
-      <div className="second-footer">
+      <div className="second-footer" style={{ backgroundColor: "#1D2A4D" }}>
         <div className="container">
           <div className="row">
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-3 widget-area">

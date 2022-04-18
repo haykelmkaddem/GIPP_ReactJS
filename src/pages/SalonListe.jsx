@@ -35,10 +35,10 @@ const SalonListe = ({ route, navigation }) => {
       <Header />
       <div className="my-main mb-5">
         <div className="container">
-          <div className="row">
+          <div className="row pt-5">
             {salonList.map((salon, index) => (
-              <div className="col-md-12 px-5" key={index}>
-                <div className="card p-3 mx-5 my-primary my-salon-card">
+              <div className="col-md-12 px-5 mb-5" key={index}>
+                <div className="front-card card p-3 mx-5 my-primary my-salon-card">
                   <div className="container">
                     <div className="row">
                       <div className="col-md-8">

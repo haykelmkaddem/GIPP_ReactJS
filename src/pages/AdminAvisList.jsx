@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 const AdminAvisList = () => {
   return (
     <>
-      <div>
+      <div className="my-admin-1">
         <AdminHeader />
         <div class="main-content">
           <div class="page-content">

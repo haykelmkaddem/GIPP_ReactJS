@@ -26,6 +26,10 @@ import Marketplace from "./pages/Marketplace";
 import SalonDelails from "./pages/SalonDelails";
 import SalonListe from "./pages/SalonListe";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Settings from "./pages/Settings";
+import MesCommandes from "./pages/MesCommandes";
+import MesSalons from "./pages/MesSalons";
+import UpdatePassword from "./pages/UpdatePassword";
 
 const App = () => {
   return (
@@ -36,7 +40,7 @@ const App = () => {
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/actualite" element={<Actualite />} />
         <Route path="/actualiteDetails/:id" element={<ActualiteDetails />} />
-        <Route path="/cart/:id" element={<Cart />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/commandDetails/:id" element={<CommandDetails />} />
         <Route path="/commandList" element={<CommandList />} />
         <Route path="/contactUs" element={<ContactUs />} />
@@ -44,6 +48,10 @@ const App = () => {
         <Route path="/salonDelails/:id" element={<SalonDelails />} />
         <Route path="/salonListe" element={<SalonListe />} />
         <Route path="/detailproduit/:id" element={<DetailProduit />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/mesCommandes" element={<MesCommandes />} />
+        <Route path="/mesSalons" element={<MesSalons />} />
+        <Route path="/updatePassword" element={<UpdatePassword />} />
 
         <Route path="/apropos" element={<Apropos />} />
         <Route path="/adminavislist" element={<AdminAvisList />} />

@@ -127,12 +127,11 @@ const Marketplace = ({ route, navigation }) => {
                     </div>
                   </div>
                   {productList.map((product, index) => (
-                    <div
-                      className="col-md-4"
-                      style={{ marginBottom: 30 }}
-                      key={index}
-                    >
-                      <div className="card h-90 shadow-sm mb-5">
+                    <div className="col-md-4" key={index}>
+                      <div
+                        className="front-card card h-90 shadow-sm mb-5"
+                        style={{ borderRadius: 10, overflow: "hidden" }}
+                      >
                         <img
                           src="/assets/FrontOffice/images/produits/chelba.jpg"
                           className="card-img-top"
@@ -150,13 +149,25 @@ const Marketplace = ({ route, navigation }) => {
                         )}
 
                         <div className="card-body">
-                          <div className="clearfix mb-3">
+                          <div
+                            className=" mb-3"
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
                             {product.discount == null ? (
-                              <span className="float-start badge rounded-pill bg-success">
+                              <span
+                                className="float-start badge rounded-pill bg-success"
+                                style={{ color: "white" }}
+                              >
                                 {product.prix} Dt
                               </span>
                             ) : (
-                              <span className="float-start badge rounded-pill bg-success">
+                              <span
+                                className="float-start badge rounded-pill bg-success"
+                                style={{ color: "white" }}
+                              >
                                 {product.discount} Dt
                               </span>
                             )}
@@ -191,14 +202,14 @@ const Marketplace = ({ route, navigation }) => {
                             )}
                           </div>
                           <h5 className="card-title">{product.nom}</h5>
-                          <p style={{ height: 70, overflow: "hidden" }}>
+                          <p style={{ height: 65, overflow: "hidden" }}>
                             {product.description}
                           </p>
-                          <div className="text-center my-4">
+                          <div className="text-center my-2">
                             <button
                               className="btn-lg rounded-pill"
                               style={{
-                                backgroundColor: "rgb(19, 198, 221)",
+                                backgroundColor: "#0e204d",
                                 color: "white",
                               }}
                               onClick={() => {
