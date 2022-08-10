@@ -50,15 +50,34 @@
 }
 .cart-right-container {
   border-radius: 15px;
-  font-size: 24px;
+  font-size: 18px;
   padding: 15px;
 }
 .cart-right-container div {
   padding-bottom: 12px;
 }
 .cart-right-container div p {
-  font-size: 18px;
-  opacity: 0.5;
+  font-size: 15px;
+  opacity: 0.8;
+}
+.cart-right-container-scroll {
+  width: 200px;
+  height: 400px;
+   background: red;
+  overflow: scroll;
+}
+.cart-right-container-scroll::-webkit-scrollbar {
+   width: 12px;
+}
+
+.cart-right-container-scroll::-webkit-scrollbar-track {
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+   border-radius: 10px;
+}
+
+.cart-right-container-scroll::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 .my-text-primary {
   color: #0e204d;

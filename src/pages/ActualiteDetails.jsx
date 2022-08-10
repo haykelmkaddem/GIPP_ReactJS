@@ -32,6 +32,86 @@ const ActualiteDetails = ({ route, navigation }) => {
   return (
     <div>
       <Header />
+      {isLoading && (
+        <div className="container my-main mb-5">
+          <div class="scene">
+            <div class="plane">
+              <div class="cube cube--0">
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+              </div>
+              <div class="shadow shadow--0"></div>
+              <div class="cube cube--1">
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+              </div>
+              <div class="shadow shadow--1"></div>
+              <div class="cube cube--2">
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+              </div>
+              <div class="shadow shadow--2"></div>
+              <div class="cube cube--3">
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+              </div>
+              <div class="shadow shadow--3"></div>
+              <div class="cube cube--4">
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+              </div>
+              <div class="shadow shadow--4"></div>
+              <div class="cube cube--5">
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+              </div>
+              <div class="shadow shadow--5"></div>
+              <div class="cube cube--6">
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+              </div>
+              <div class="shadow shadow--6"></div>
+              <div class="cube cube--7">
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+                <div class="cube__side"></div>
+              </div>
+              <div class="shadow shadow--7"></div>
+            </div>
+          </div>
+        </div>
+      )}
       {!isLoading && (
         <div className="container my-main mb-5 mt-5">
           <h1>{actualiteDetails.data.titre}</h1>
@@ -40,13 +120,25 @@ const ActualiteDetails = ({ route, navigation }) => {
             {actualiteDetails.data.createdAt.substr(11, 5)}
           </p>
           <img
-            src="/assets/FrontOffice/images/actualites/act2.png"
+            src={`http://127.0.0.1:8000/uploads/${actualiteDetails.data.image}`}
             alt="image"
-            style={{ width: "100%", marginBottom: 50, maxHeight: 500 }}
+            style={{
+              width: "100%",
+              marginBottom: 50,
+              maxHeight: 500,
+              borderRadius: 15,
+            }}
           />
           <p style={{ fontSize: 18, color: "#0e204d" }}>
             {actualiteDetails.data.description}
           </p>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
         </div>
       )}
 

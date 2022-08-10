@@ -31,8 +31,46 @@ import "../assets/FrontOffice/css/cartgipp.css";
 // import "../assetsFrontOffice/js/imagesloaded.min.js";
 // import "../assetsFrontOffice/js/jquery-isotope.js";
 // import "../assetsFrontOffice/js/main.js";
+import ImageUploading from "react-images-uploading";
+import { AiFillDelete } from "react-icons/ai";
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { BiTimeFive, BiCalendar, BiFilterAlt } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+const CART_URL = "http://127.0.0.1:8000/panier/showall";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  const [playOnce, setPlayOnce] = useState(false);
+  const [run, setRun] = useState(false);
+  const [commandes, setCommandes] = useState([]);
+  const [productList, setProductList] = useState([]);
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    localStorage.getItem("selected_language")
+  );
+
+  function fetchCart() {
+    axios
+      .post(CART_URL, {
+        userId: localStorage.getItem("id"),
+      })
+      .then((response) => {
+        localStorage.setItem("cart", response.data.length);
+      })
+      .finally(() => {
+        setRun(!run);
+      });
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem("id")) {
+      fetchCart();
+    }
+  }, [run]);
+
   return (
     <header
       id="masthead"
@@ -50,9 +88,13 @@ const Header = () => {
                   <div className="site-branding">
                     <a
                       className="home-link"
-                      href="index.html"
                       title="Aqovo"
                       rel="home"
+                      onClick={() => {
+                        localStorage.setItem("playonce", 0);
+                        navigate("/");
+                      }}
+                      style={{ cursor: "pointer" }}
                     >
                       <div className="row">
                         <div className="col-xl-6">
@@ -64,7 +106,7 @@ const Header = () => {
                           />
                         </div>
                         <div className="col-xl-6">
-                          <h3 style={{ marginTop: "33%", marginLeft: "-47%" }}>
+                          <h3 style={{ marginTop: "43%", marginLeft: "-47%" }}>
                             GIPP
                           </h3>
                         </div>
@@ -82,50 +124,273 @@ const Header = () => {
                         <ul className="menu">
                           <li className="mega-menu-item">
                             <a className="mega-menu-link">
-                              <NavLink to="/apropos">À propos</NavLink>
+                              {!localStorage.getItem("selected_language") && (
+                                <NavLink to="/apropos">À propos</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Français" && (
+                                <NavLink to="/apropos">À propos</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Anglais" && (
+                                <NavLink to="/apropos">About Us</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Arabe" && (
+                                <div
+                                  style={{ fontSize: 18, fontWeight: "bold" }}
+                                >
+                                  <NavLink to="/apropos">من نحن</NavLink>
+                                </div>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Italien" && (
+                                <NavLink to="/apropos">Chi Siamo</NavLink>
+                              )}
                             </a>
                           </li>
                           <li className="mega-menu-item">
                             <a className="mega-menu-link">
-                              <NavLink to="/marketplace">Marketplace</NavLink>
+                              {!localStorage.getItem("selected_language") && (
+                                <NavLink to="/marketplace">Marketplace</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Français" && (
+                                <NavLink to="/marketplace">Marketplace</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Anglais" && (
+                                <NavLink to="/marketplace">Marketplace</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Arabe" && (
+                                <div
+                                  style={{ fontSize: 18, fontWeight: "bold" }}
+                                >
+                                  <NavLink to="/marketplace">المتجر</NavLink>
+                                </div>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Italien" && (
+                                <NavLink to="/marketplace">Mercato</NavLink>
+                              )}
                             </a>
                           </li>
                           <li className="mega-menu-item">
                             <a className="mega-menu-link">
-                              <NavLink to="/salonListe"> Salons </NavLink>
+                              {!localStorage.getItem("selected_language") && (
+                                <NavLink to="/salonListe"> Salons </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Français" && (
+                                <NavLink to="/salonListe"> Salons </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Anglais" && (
+                                <NavLink to="/salonListe">
+                                  {" "}
+                                  Trade Exposition{" "}
+                                </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Arabe" && (
+                                <div
+                                  style={{ fontSize: 18, fontWeight: "bold" }}
+                                >
+                                  <NavLink to="/salonListe"> المعارض </NavLink>
+                                </div>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Italien" && (
+                                <NavLink to="/salonListe"> Soggiorno </NavLink>
+                              )}
                             </a>
                           </li>
                           <li className="mega-menu-item">
                             <a className="mega-menu-link">
-                              <NavLink to="/actualite">Actualités</NavLink>
+                              {!localStorage.getItem("selected_language") && (
+                                <NavLink to="/actualite">Actualités</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Français" && (
+                                <NavLink to="/actualite">Actualités</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Anglais" && (
+                                <NavLink to="/actualite">News</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Arabe" && (
+                                <div
+                                  style={{ fontSize: 18, fontWeight: "bold" }}
+                                >
+                                  <NavLink to="/actualite">الاخبار</NavLink>
+                                </div>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Italien" && (
+                                <NavLink to="/actualite">Notizia</NavLink>
+                              )}
                             </a>
                           </li>
 
                           <li className="mega-menu-item">
                             <a>
-                              <NavLink to="/contactUs"> Contact </NavLink>
+                              {!localStorage.getItem("selected_language") && (
+                                <NavLink to="/contactUs">
+                                  {" "}
+                                  Contactez nous{" "}
+                                </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Français" && (
+                                <NavLink to="/contactUs">
+                                  {" "}
+                                  Contactez nous{" "}
+                                </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Anglais" && (
+                                <NavLink to="/contactUs"> Contact Us </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Arabe" && (
+                                <div
+                                  style={{ fontSize: 18, fontWeight: "bold" }}
+                                >
+                                  <NavLink to="/contactUs"> اتصل بنا </NavLink>
+                                </div>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Italien" && (
+                                <NavLink to="/contactUs"> Contattaci </NavLink>
+                              )}
                             </a>
                           </li>
                           <li className="mega-menu-item">
                             <a className="mega-menu-link">
-                              <img
-                                src="/assets/FrontOffice/images/globe3.png"
-                                style={{ width: 36.67, height: 32 }}
-                              />
+                              {selectedLanguage == "Français" && (
+                                <span className="d-flex align-items-center justify-content-center text-center">
+                                  <img
+                                    src="/assets/FrontOffice/images/fr.jpg"
+                                    style={{ width: 20, height: 13 }}
+                                  />{" "}
+                                  &nbsp; FR
+                                </span>
+                              )}
+                              {selectedLanguage == "Anglais" && (
+                                <span className="d-flex align-items-center justify-content-center text-center">
+                                  <img
+                                    src="/assets/FrontOffice/images/an.png"
+                                    style={{ width: 20, height: 13 }}
+                                  />{" "}
+                                  &nbsp; EN
+                                </span>
+                              )}
+                              {selectedLanguage == "Arabe" && (
+                                <span className="d-flex align-items-center justify-content-center text-center">
+                                  <img
+                                    src="/assets/FrontOffice/images/art.png"
+                                    style={{ width: 20, height: 13 }}
+                                  />{" "}
+                                  &nbsp; AR
+                                </span>
+                              )}
+                              {selectedLanguage == "Italien" && (
+                                <span className="d-flex align-items-center justify-content-center text-center">
+                                  <img
+                                    src="/assets/FrontOffice/images/it.jpg"
+                                    style={{ width: 20, height: 13 }}
+                                  />{" "}
+                                  &nbsp; IT
+                                </span>
+                              )}
                             </a>
 
                             <ul className="mega-submenu">
                               <li>
-                                <a href="#">Français</a>
+                                <a
+                                  onClick={() => {
+                                    setSelectedLanguage("Français");
+                                    localStorage.removeItem(
+                                      "selected_language"
+                                    );
+                                    localStorage.setItem(
+                                      "selected_language",
+                                      "Français"
+                                    );
+                                  }}
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  <img
+                                    src="/assets/FrontOffice/images/fr.jpg"
+                                    style={{ width: 20, height: 13 }}
+                                  />{" "}
+                                  &nbsp; Français
+                                </a>
                               </li>
                               <li>
-                                <a href="#">Anglais</a>
+                                <a
+                                  onClick={() => {
+                                    setSelectedLanguage("Anglais");
+                                    localStorage.removeItem(
+                                      "selected_language"
+                                    );
+                                    localStorage.setItem(
+                                      "selected_language",
+                                      "Anglais"
+                                    );
+                                  }}
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  <img
+                                    src="/assets/FrontOffice/images/an.png"
+                                    style={{ width: 20, height: 13 }}
+                                  />{" "}
+                                  &nbsp; Anglais
+                                </a>
                               </li>
                               <li>
-                                <a href="#">Arabe</a>
+                                <a
+                                  onClick={() => {
+                                    setSelectedLanguage("Arabe");
+                                    localStorage.removeItem(
+                                      "selected_language"
+                                    );
+                                    localStorage.setItem(
+                                      "selected_language",
+                                      "Arabe"
+                                    );
+                                  }}
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  <img
+                                    src="/assets/FrontOffice/images/art.png"
+                                    style={{ width: 20, height: 13 }}
+                                  />{" "}
+                                  &nbsp; Arabe
+                                </a>
                               </li>
                               <li>
-                                <a href="#">Italien</a>
+                                <a
+                                  onClick={() => {
+                                    setSelectedLanguage("Italien");
+                                    localStorage.removeItem(
+                                      "selected_language"
+                                    );
+                                    localStorage.setItem(
+                                      "selected_language",
+                                      "Italien"
+                                    );
+                                  }}
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  <img
+                                    src="/assets/FrontOffice/images/it.jpg"
+                                    style={{ width: 20, height: 13 }}
+                                  />{" "}
+                                  &nbsp; Italien
+                                </a>
                               </li>
                             </ul>
                           </li>
@@ -138,11 +403,11 @@ const Header = () => {
                     <a
                       id="login"
                       className="ttm-btn ttm-btn-size-md ttm-btn-shape-rounded ttm-btn-style-border ttm-btn-color-blue login"
-                      href="login.html"
+                      href="login"
                       style={{ backgroundColor: "#13c6dd", borderWidth: 0 }}
                     >
                       <div className="row">
-                        <div className="col-xl-6">
+                        <div className="col-xl-3">
                           <svg
                             style={{
                               height: 27,
@@ -165,12 +430,50 @@ const Header = () => {
                             ></path>
                           </svg>
                         </div>
-                        <div
-                          className="col-xl-6"
-                          style={{ marginLeft: "-24%", marginTop: "5%" }}
-                        >
-                          Login
-                        </div>
+                        {!localStorage.getItem("selected_language") && (
+                          <div
+                            sclassName="col-xl-9"
+                            style={{ marginLeft: "-1%", marginTop: "5%" }}
+                          >
+                            Se connecter
+                          </div>
+                        )}
+                        {localStorage.getItem("selected_language") ==
+                          "Français" && (
+                          <div
+                            className="col-xl-9"
+                            style={{ marginLeft: "-1%", marginTop: "5%" }}
+                          >
+                            Se connecter
+                          </div>
+                        )}
+                        {localStorage.getItem("selected_language") ==
+                          "Anglais" && (
+                          <div
+                            className="col-xl-9"
+                            style={{ marginLeft: "-1%", marginTop: "5%" }}
+                          >
+                            Login
+                          </div>
+                        )}
+                        {localStorage.getItem("selected_language") ==
+                          "Arabe" && (
+                          <div
+                            className="col-xl-9"
+                            style={{ marginLeft: "-1%", marginTop: "5%" }}
+                          >
+                            تسجيل الدخول
+                          </div>
+                        )}
+                        {localStorage.getItem("selected_language") ==
+                          "Italien" && (
+                          <div
+                            className="col-xl-9"
+                            style={{ marginLeft: "-1%", marginTop: "5%" }}
+                          >
+                            Accedi
+                          </div>
+                        )}
                       </div>
                     </a>
                   )}
@@ -178,29 +481,190 @@ const Header = () => {
                     <nav className="main-menu menu-mobile" id="menu">
                       <ul className="menu">
                         <li className="mega-menu-item">
-                          <a href="#" className="mega-menu-link">
+                          <a className="mega-menu-link">
                             {localStorage.getItem("prenom")}{" "}
                             {localStorage.getItem("nom")}
                           </a>
                           <ul className="mega-submenu">
                             <li>
-                              <NavLink to="/settings"> Settings</NavLink>
+                              {localStorage.getItem("selected_language") ==
+                                "Français" && (
+                                <NavLink to="/settings"> Paramétre </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Anglais" && (
+                                <NavLink to="/settings"> Settings</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Arabe" && (
+                                <NavLink to="/settings"> الإعدادات</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Italien" && (
+                                <NavLink to="/settings"> Impostazioni</NavLink>
+                              )}
                             </li>
                             <li>
-                              <NavLink to="/mesCommandes">
-                                Mes Commandes
-                              </NavLink>
+                              {localStorage.getItem("selected_language") ==
+                                "Français" && (
+                                <NavLink to="/mesCommandes">
+                                  Mes Commandes
+                                </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Anglais" && (
+                                <NavLink to="/mesCommandes">My Orders</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Arabe" && (
+                                <NavLink to="/mesCommandes">طلباتي</NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Italien" && (
+                                <NavLink to="/mesCommandes">
+                                  I miei ordini
+                                </NavLink>
+                              )}
                             </li>
                             <li>
-                              <NavLink to="/cart"> Panier </NavLink>
+                              {localStorage.getItem("selected_language") ==
+                                "Français" && (
+                                <NavLink to="/cart"> Panier </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Anglais" && (
+                                <NavLink to="/cart"> Cart </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Arabe" && (
+                                <NavLink to="/cart"> سلة الشراء </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Italien" && (
+                                <NavLink to="/cart"> Cestino </NavLink>
+                              )}
                             </li>
                             <li>
-                              <NavLink to="/mesSalons"> Mes Salons </NavLink>
+                              {localStorage.getItem("selected_language") ==
+                                "Français" && (
+                                <NavLink to="/mesSalons"> Mes Salons </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Anglais" && (
+                                <NavLink to="/mesSalons">
+                                  {" "}
+                                  My Trade Exposition{" "}
+                                </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Arabe" && (
+                                <NavLink to="/mesSalons"> معارضي </NavLink>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Italien" && (
+                                <NavLink to="/mesSalons">
+                                  {" "}
+                                  La mia esposizione commerciale{" "}
+                                </NavLink>
+                              )}
                             </li>
                             <li>
-                              <a href="#"> Déconnexion </a>
+                              {localStorage.getItem("selected_language") ==
+                                "Français" && (
+                                <a
+                                  onClick={() => {
+                                    localStorage.removeItem("email");
+                                    localStorage.removeItem("nom");
+                                    localStorage.removeItem("prenom");
+                                    localStorage.removeItem("id");
+                                    localStorage.removeItem(
+                                      "selected_language"
+                                    );
+                                    navigate("/login");
+                                  }}
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  Déconnexion
+                                </a>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Anglais" && (
+                                <a
+                                  onClick={() => {
+                                    localStorage.removeItem("email");
+                                    localStorage.removeItem("nom");
+                                    localStorage.removeItem("prenom");
+                                    localStorage.removeItem("id");
+                                    localStorage.removeItem(
+                                      "selected_language"
+                                    );
+                                    navigate("/login");
+                                  }}
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  Logout
+                                </a>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Arabe" && (
+                                <a
+                                  onClick={() => {
+                                    localStorage.removeItem("email");
+                                    localStorage.removeItem("nom");
+                                    localStorage.removeItem("prenom");
+                                    localStorage.removeItem("id");
+                                    localStorage.removeItem(
+                                      "selected_language"
+                                    );
+                                    navigate("/login");
+                                  }}
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  تسجيل الخروج
+                                </a>
+                              )}
+                              {localStorage.getItem("selected_language") ==
+                                "Italien" && (
+                                <a
+                                  onClick={() => {
+                                    localStorage.removeItem("email");
+                                    localStorage.removeItem("nom");
+                                    localStorage.removeItem("prenom");
+                                    localStorage.removeItem("id");
+                                    localStorage.removeItem(
+                                      "selected_language"
+                                    );
+                                    navigate("/login");
+                                  }}
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  disconnettersi
+                                </a>
+                              )}
                             </li>
                           </ul>
+                        </li>
+                        <li className="mega-menu-item">
+                          <div
+                            class="header_cart"
+                            onClick={() => {
+                              navigate("/cart");
+                            }}
+                          >
+                            <a class="cart_btn">
+                              <div class="cart_icon">
+                                <i class="fa fa-shopping-cart"></i>
+                              </div>
+                              <div class="cart_count ttm-bgcolor-skincolor">
+                                {!localStorage.getItem("cart") && (
+                                  <span>0</span>
+                                )}
+                                {localStorage.getItem("cart") && (
+                                  <span>{localStorage.getItem("cart")}</span>
+                                )}
+                              </div>
+                            </a>
+                          </div>
                         </li>
                       </ul>
                     </nav>

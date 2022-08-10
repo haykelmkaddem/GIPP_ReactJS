@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { AiFillDelete } from "react-icons/ai";
+import { BsCartX } from "react-icons/bs";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import axios from "axios";
@@ -56,7 +57,7 @@ const Cart = () => {
         ) {
           swalWithBootstrapButtons.fire(
             "Annulé",
-            "La Supprission a été annulé :)",
+            "La Suppression a été annulé :)",
             "error"
           );
         }
@@ -179,10 +180,88 @@ const Cart = () => {
   return (
     <div>
       <Header />
+      {isLoading && (
+        <div class="scene my-main mt-5 mb-5">
+          <div class="plane">
+            <div class="cube cube--0">
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+            </div>
+            <div class="shadow shadow--0"></div>
+            <div class="cube cube--1">
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+            </div>
+            <div class="shadow shadow--1"></div>
+            <div class="cube cube--2">
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+            </div>
+            <div class="shadow shadow--2"></div>
+            <div class="cube cube--3">
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+            </div>
+            <div class="shadow shadow--3"></div>
+            <div class="cube cube--4">
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+            </div>
+            <div class="shadow shadow--4"></div>
+            <div class="cube cube--5">
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+            </div>
+            <div class="shadow shadow--5"></div>
+            <div class="cube cube--6">
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+            </div>
+            <div class="shadow shadow--6"></div>
+            <div class="cube cube--7">
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+              <div class="cube__side"></div>
+            </div>
+            <div class="shadow shadow--7"></div>
+          </div>
+        </div>
+      )}
       {!isLoading && (
         <>
           {productList.length > 0 ? (
-            <div className="my-main mt-5 mb-5">
+            <div className="my-main mb-5" style={{ minHeight: "100vh" }}>
               <div className="container ">
                 <div className="row ">
                   <div className="col-md-8 p-0">
@@ -195,11 +274,32 @@ const Cart = () => {
                       >
                         <div className="row">
                           <div className="col-md-2 cart-item cart-product-image">
-                            <img src="assets/FrontOffice/images/portfolio/portfolio-02-770x770.jpg" />
+                            <div style={{ height: 90, width: 100 }}>
+                              <img
+                                src={`http://127.0.0.1:8000/uploads/${product.produit.image[0].imageURL}`}
+                                style={{
+                                  height: "100%",
+                                  width: "100%",
+                                  objectFit: "cover",
+                                }}
+                              />
+                            </div>
                           </div>
-                          <div className="col-md-4 cart-item">
-                            <div className="cart-product-description">
+                          <div
+                            className="col-md-4 cart-item"
+                            style={{
+                              width: "auto",
+                              display: "flex",
+                              justifyContent: "left",
+                              alignItems: "center",
+                            }}
+                          >
+                            <div
+                              className="cart-product-description"
+                              style={{ width: "auto" }}
+                            >
                               <p>{product.produit.nom}</p>
+                              <br />
                               <h6 className="cart-price">
                                 {product.produit.discount == null ? (
                                   <span className="new-price px-2">
@@ -228,7 +328,7 @@ const Cart = () => {
                               </h6>
                             </div>
                           </div>
-                          <div className="col-md-3  cart-item ">
+                          <div className="col-md-3 cart-item ">
                             <table>
                               <tr>
                                 <td>
@@ -249,6 +349,7 @@ const Cart = () => {
                                     // onChange={(e) =>
                                     //   this.setState({ inputValue: e.target.value })
                                     // }
+                                    style={{ backgroundColor: "#F5F7FA" }}
                                     defaultValue={product.quantite}
                                     key={product.quantite}
                                   />
@@ -290,8 +391,26 @@ const Cart = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="col-md-4 h-100">
-                    <div className="cart-right-container my-bg-color-primary container-fluid">
+                  <div
+                    className="cart-right-container-scroll shadow"
+                    style={{
+                      backgroundColor: "#13C6DD",
+                      padding: "20px",
+                      paddingBottom: 100,
+                      position: "absolute",
+                      marginTop: "10px",
+                      paddingBottom: "10px",
+                      right: "0",
+                      top: 70,
+                      width: "25%",
+                      height: "84vh",
+                      zIndex: "1",
+                      overflow: "auto",
+                      borderTopLeftRadius: "10px",
+                      borderBottomLeftRadius: "10px",
+                    }}
+                  >
+                    <div className="cart-right-container text-light">
                       <div className="row">
                         <div className="col-md-6">
                           {productList.length} Articles
@@ -369,15 +488,17 @@ const Cart = () => {
               </div>
             </div>
           ) : (
-            <div className="my-main mt-5 mb-5">
-              <div className="container ">
-                <div className="row ">
-                  <div className="col-md-8 p-0">
-                    <h5>Panier</h5>
-                    <p>panier Vide !</p>
-                  </div>
-                </div>
-              </div>
+            <div
+              className="container my-main mt-5 mb-5"
+              style={{
+                textAlign: "center",
+                paddingBottom: 80,
+              }}
+            >
+              <BsCartX
+                style={{ fontSize: 280, color: "#495057", marginBottom: 20 }}
+              />
+              <h1 className="text-center">Panier Vide !</h1>
             </div>
           )}
         </>

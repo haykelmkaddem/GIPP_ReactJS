@@ -1392,7 +1392,7 @@ i.fa-play{ padding-left: 5px; }
     font-weight: 600;
     margin-bottom: 10px;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical; 
 }
 .featured-imagebox .featured-content .category, .featured-imagebox .featured-content .category a {
@@ -2505,6 +2505,23 @@ div:hover > .ttm-box-view-overlay:before, div:hover > .ttm-box-view-content-inne
     content: "";
     right: 50px;
     bottom: -40px;
+    height: 53px;
+    width: 61px;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -ms-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+    -webkit-mask: url(../images/quote-3.svg) no-repeat 100% 100%;
+    -webkit-mask-box-image: url(../images/quote-3.svg);
+    -webkit-mask-size: contain;
+    opacity: 0.08;
+}
+.testimonials.ttm-testimonial-box-view-style2 .testimonial-content blockquote.comm:before {
+    position: absolute;
+    content: "";
+    right: 50px;
+    bottom: 100%;
     height: 53px;
     width: 61px;
     -webkit-transition: all 0.5s ease 0s;

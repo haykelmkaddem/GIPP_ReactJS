@@ -16,6 +16,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [runuseeffect, setRunuseeffect] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [controlRole, setControlRole] = useState(false);
 
   useEffect(() => {
     console.log("message -> " + message);
@@ -37,11 +38,31 @@ const Login = () => {
       localStorage.setItem("nom", response.data.user.nom);
       localStorage.setItem("prenom", response.data.user.prenom);
       localStorage.setItem("id", response.data.user.id);
+      localStorage.setItem("selected_language", "Français");
+      localStorage.setItem("playonce", 0);
 
-      if (isAdmin) {
-        navigate("/adminavislist");
-      } else {
-        navigate("/");
+      if (roleuser.length > 0 && controlRole == true && response != "") {
+        let admintest = false;
+        for (let i = 0; i < response.data.user.roles.length; i++) {
+          if (response.data.user.roles[i] == "ROLE_ADMIN") {
+            admintest = true;
+            break;
+          }
+        }
+
+        if (admintest) {
+          console.log("hethi hia s7i7a" + admintest);
+          navigate("/admindashboard");
+        } else {
+          console.log("hethi hia s7i7a" + admintest);
+          navigate("/");
+        }
+
+        // if (isAdmin) {
+        //   // navigate("/adminavislist");
+        // } else {
+        //   // navigate("/");
+        // }
       }
     }
   }, [email, password, isLoading, runuseeffect]);
@@ -72,64 +93,86 @@ const Login = () => {
         setIsAdmin(true);
       }
     }
+    setControlRole(true);
     setIsLoading(true);
   }
 
   return (
-    <div>
+    <div
+      style={{
+        height: "100vh",
+        width: "100vw",
+        margin: 0,
+        backgroundColor: "#1D2A4D",
+      }}
+    >
       <div className="page">
-        <div className="row" style={{ marginTop: "4%" }}>
+        <div
+          className="row"
+          style={{
+            //backgroundColor: "#13C6DD",
+            //background: "linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%)",
+            backgroundImage:
+              "url(/assets/FrontOffice/images/bg-image/col-bgimage-5.jpg)",
+            backgroundSize: "cover",
+            padding: 45,
+            paddingBottom: 120,
+          }}
+        >
+          <div className="col-lg-3"></div>
           <div className="col-lg-6">
-            <img
-              src={"assets/FrontOffice/images/login_page.jpg"}
-              style={{ width: "100%", height: 616, marginTop: "-9%" }}
-            />
-          </div>
-          <div className="col-lg-6">
-            <div className="ttm-bgcolor-white p-40 padding_top35 border-rad_5 margin_top15">
-              <a
-                className="home-link"
-                href="index.html"
-                title="Aqovo"
-                rel="home"
-              >
-                <div className="row">
-                  <div className="col-xl-6">
+            <div className="card p-5">
+              <div className="col-md-12 d-flex align-items-center justify-content-center">
+                <a className="home-link" title="Aqovo" rel="home">
+                  <div className="row">
                     <img
                       id="logo-img"
                       className="img-fluid auto_size"
-                      src={"assets/FrontOffice/images/1-aqvo-logo.png"}
+                      src={"/assets/FrontOffice/images/1-aqvo-logo.png"}
                       alt="logo-img"
-                      style={{ marginLeft: "87%" }}
                     />
+                    <div style={{ position: "relative" }}>
+                      <h1
+                        style={{
+                          position: "absolute",
+                          bottom: 0,
+                          left: 10,
+                          fontSize: 38,
+                          fontWeight: "bold",
+                        }}
+                      >
+                        GIPP
+                      </h1>
+                    </div>
                   </div>
-                  <div className="col-xl-6">
-                    <h3 style={{ marginTop: "10%", marginLeft: "0%" }}>GIPP</h3>
-                  </div>
-                </div>
-              </a>
+                </a>
+              </div>
               <br />
               <div className="row">
-                <div className="col-md-3">
+                <div className="col-md-3 d-flex align-items-center">
                   <span className="text-input">Email</span>
                 </div>
                 <div className="col-md-9">
-                  <span className="text-input">
+                  <span className="text-input w-100">
                     <input
+                      style={{ backgroundColor: "#EFF3FF", border: "none" }}
                       type="text"
                       defaultValue={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Votre email"
-                      required
                     />
                   </span>
                 </div>
-                <div className="col-md-3">
+                <br />
+                <br />
+                <br />
+                <div className="col-md-3 d-flex align-items-center">
                   <span className="text-input">Mot de passe</span>
                 </div>
                 <div className="col-md-9">
-                  <span className="text-input">
+                  <span className="text-input w-100">
                     <input
+                      style={{ backgroundColor: "#EFF3FF", border: "none" }}
                       type="password"
                       defaultValue={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -138,6 +181,9 @@ const Login = () => {
                     />
                   </span>
                 </div>
+                <br />
+                <br />
+                <br />
                 {message != "ok" && message != "" && (
                   <>
                     <div className="col-md-3"></div>
@@ -146,63 +192,41 @@ const Login = () => {
                     </div>
                   </>
                 )}
+                <div className="col-md-3"></div>
+                <div className="col-md-9">
+                  <p>
+                    Vous n'avez pas de compte ?{" "}
+                    <span
+                      style={{
+                        cursor: "pointer",
+                        color: "#0e204d",
+                      }}
+                      onClick={() => navigate("/inscription")}
+                    >
+                      Inscription
+                    </span>
+                  </p>
+                </div>
 
                 <div className="col-lg-12">
                   <button
+                    style={{ borderRadius: 15 }}
                     className="submit ttm-btn ttm-btn-size-md ttm-btn-shape-rounded ttm-btn-style-fill ttm-btn-color-skincolor w-100 margin_top5"
                     onClick={() => fetchUser(email, password)}
                   >
                     Se Connecter
                   </button>
                 </div>
-                <div className="col-lg-12">
-                  <br />
-                  <br />
-                </div>
-
-                <div className="col-lg-12" style={{ textAlign: "center" }}>
-                  <div className="social-icons d-inline-block margin_top10 margin_bottom10">
-                    <ul className="social-icons list-inline">
-                      <li>
-                        <a
-                          className="tooltip-top"
-                          href="#"
-                          rel="noopener"
-                          aria-label="facebook"
-                          data-tooltip="Facebook"
-                        >
-                          <i className="fa fa-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="tooltip-top"
-                          href="#"
-                          rel="noopener"
-                          aria-label="twitter"
-                          data-tooltip="Twitter"
-                        >
-                          <i className="fa fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="tooltip-top"
-                          href="#"
-                          rel="noopener"
-                          aria-label="instagram"
-                          data-tooltip="Instagram"
-                        >
-                          <i className="fa fa-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
+        <footer className="footer widget-footer ttm-bgcolor-darkgrey ttm-textcolor-white">
+          <div
+            className="second-footer"
+            style={{ backgroundColor: "#1D2A4D" }}
+          ></div>
+        </footer>
       </div>
     </div>
   );

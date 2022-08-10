@@ -1,9 +1,55 @@
 import React from "react";
 import AdminHeader from "../components/AdminHeader";
+import ImageUploading from "react-images-uploading";
+import { AiFillDelete } from "react-icons/ai";
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useState, useEffect } from "react";
+import { BiTimeFive, BiCalendar, BiFilterAlt } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+const ADD_ACTUALITE_URL = "http://127.0.0.1:8000/actualite/new";
 
 const AdminActualiteAdd = () => {
+  const [images, setImages] = React.useState("");
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  const [playOnce, setPlayOnce] = useState(false);
+  const [formdatastate, setFormdatastate] = useState([]);
+
+  const [titre, setTitre] = useState("");
+  const [description, setDescription] = useState("");
+  const [message, setMessage] = useState("");
+
+  let formData = new FormData();
+  const onChange = (imageList, addUpdateIndex) => {
+    const fileObjects = imageList.map((file) => {
+      formData.append("assets", file.file, file.file.name);
+    });
+    setImages(imageList);
+    setFormdatastate(formData);
+  };
+
+  function fetchAddActualite() {
+    if (titre == "") {
+      setMessage("Please complete the Title");
+    } else if (description == "") {
+      setMessage("Please complete the Description");
+    } else if (images.length == 0) {
+      setMessage("Please complete the Image");
+    } else {
+      formdatastate.append("titre", titre);
+      formdatastate.append("description", description);
+      axios.post(ADD_ACTUALITE_URL, formdatastate).finally(() => {
+        navigate("/adminactualitelist");
+      });
+    }
+  }
+
   return (
-    <div>
+    <div className="my-admin-1">
       <AdminHeader />
       <div className="main-content">
         <div className="page-content">
@@ -12,24 +58,32 @@ const AdminActualiteAdd = () => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Add Product</h4>
+                    <h4>Add Actualities</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <a href="javascript: void(0);">GIPP</a>
+                        <NavLink to="/admindashboard">
+                          <a>GIPP</a>
+                        </NavLink>
                       </li>
                       <li className="breadcrumb-item">
-                        <a href="javascript: void(0);">Ecommerce</a>
+                        <NavLink to="/adminactualitelist">
+                          <a>Actualities</a>
+                        </NavLink>
                       </li>
-                      <li className="breadcrumb-item active">Add Product</li>
+                      <li className="breadcrumb-item active">
+                        Add Actualities
+                      </li>
                     </ol>
                   </div>
                 </div>
                 <div className="col-sm-6">
-                  <div className="float-end d-none d-sm-block">
-                    <a href="#" className="btn btn-success">
-                      Add Widget
-                    </a>
-                  </div>
+                  <NavLink to="/admindashboard">
+                    <div class="float-end d-none d-sm-block">
+                      <a class="btn btn-success" style={{ color: "white" }}>
+                        Dashboard
+                      </a>
+                    </div>
+                  </NavLink>
                 </div>
               </div>
             </div>
@@ -58,81 +112,19 @@ const AdminActualiteAdd = () => {
                                   className="form-label"
                                   htmlFor="productname"
                                 >
-                                  Product Name
+                                  Actuality Title
                                 </label>
                                 <input
                                   id="productname"
                                   name="productname"
                                   type="text"
-                                  className="form-control"
+                                  defaultValue={titre}
+                                  onChange={(e) => {
+                                    setTitre(e.target.value);
+                                    formData.append("titre", e.target.value);
+                                    console.log(titre);
+                                  }}
                                 />
-                              </div>
-                              <div className="row">
-                                <div className="col-lg-4">
-                                  <div className="mb-3">
-                                    <label
-                                      className="form-label"
-                                      htmlFor="manufacturername"
-                                    >
-                                      Manufacturer Name
-                                    </label>
-                                    <input
-                                      id="manufacturername"
-                                      name="manufacturername"
-                                      type="text"
-                                      className="form-control"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-lg-4">
-                                  <div className="mb-3">
-                                    <label
-                                      className="form-label"
-                                      htmlFor="manufacturerbrand"
-                                    >
-                                      Manufacturer Brand
-                                    </label>
-                                    <input
-                                      id="manufacturerbrand"
-                                      name="manufacturerbrand"
-                                      type="text"
-                                      className="form-control"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-lg-4">
-                                  <div className="mb-3">
-                                    <label
-                                      className="form-label"
-                                      htmlFor="price"
-                                    >
-                                      Price
-                                    </label>
-                                    <input
-                                      id="price"
-                                      name="price"
-                                      type="text"
-                                      className="form-control"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="row">
-                                <div className="col-md-6">
-                                  <div className="mb-3">
-                                    <label className="control-label">
-                                      Category
-                                    </label>
-                                    <select className="form-control select2">
-                                      <option>Select</option>
-                                      <option defaultValue="EL">
-                                        Electronic
-                                      </option>
-                                      <option defaultValue="FA">Fashion</option>
-                                      <option defaultValue="FI">Fitness</option>
-                                    </select>
-                                  </div>
-                                </div>
                               </div>
 
                               <div className="mb-3">
@@ -145,6 +137,15 @@ const AdminActualiteAdd = () => {
                                 <textarea
                                   className="form-control"
                                   id="productdesc"
+                                  defaultValue={description}
+                                  onChange={(e) => {
+                                    setDescription(e.target.value);
+                                    formData.append(
+                                      "description",
+                                      e.target.value
+                                    );
+                                    console.log(description);
+                                  }}
                                   rows="5"
                                 ></textarea>
                               </div>
@@ -155,29 +156,109 @@ const AdminActualiteAdd = () => {
                             <p className="card-title-desc">
                               Upload product image
                             </p>
-                            <form
-                              action="https://themesdesign.in/"
-                              method="post"
-                              className="dropzone"
-                            >
-                              <div className="fallback">
-                                <input name="file" type="file" multiple />
-                              </div>
-
-                              <div className="dz-message needsclick">
-                                <div className="mb-3">
-                                  <i className="display-4 text-muted mdi mdi-cloud-download-outline"></i>
-                                </div>
-
-                                <h4>Drop files here or click to upload.</h4>
-                              </div>
-                            </form>
                             <br />
                           </div>
-                          <div className="tab-pane" id="metadata">
+                          <ImageUploading
+                            single
+                            value={images}
+                            onChange={onChange}
+                            dataURLKey="data_url"
+                          >
+                            {({
+                              imageList,
+                              onImageUpload,
+                              onImageRemoveAll,
+                              onImageUpdate,
+                              onImageRemove,
+                              isDragging,
+                              dragProps,
+                            }) => (
+                              // write your building UI
+                              <>
+                                <div
+                                  className="upload__image-wrapper dropzone d-flex justify-content-center align-items-center text-center"
+                                  onClick={onImageUpload}
+                                  {...dragProps}
+                                  style={
+                                    isDragging ? { color: "red" } : undefined
+                                  }
+                                >
+                                  <div className="dz-message needsclick">
+                                    <div className="mb-3">
+                                      <i className="display-4 text-muted mdi mdi-cloud-download-outline"></i>
+                                    </div>
+
+                                    <h4>Drop files here or click to upload.</h4>
+                                  </div>
+                                </div>
+
+                                <div className="selected-images-container text-center w-100  d-flex p-3">
+                                  <div className="row">
+                                    {imageList.map((image, index) => (
+                                      <div className="col-2" key={index}>
+                                        <div
+                                          className="image-item"
+                                          style={{
+                                            width: 120,
+                                            height: 120,
+                                            paddingTop: 10,
+                                            position: "relative",
+                                          }}
+                                        >
+                                          <i
+                                            className="mdi mdi-progress-close"
+                                            style={{
+                                              color: "red",
+                                              fontSize: 25,
+                                              position: "absolute",
+                                              right: -12,
+                                              top: -11,
+                                              cursor: "pointer",
+                                            }}
+                                            onClick={() => onImageRemove(index)}
+                                          ></i>
+                                          <div className="shake-admin">
+                                            <img
+                                              className="image-admin-shake"
+                                              style={{
+                                                borderRadius: 15,
+                                                width: 100,
+                                                height: 100,
+                                                border: "1px solid red",
+                                              }}
+                                              src={image["data_url"]}
+                                              alt=""
+                                            />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </>
+                            )}
+                          </ImageUploading>
+                          <div
+                            style={{
+                              fontSize: 15,
+                              fontWeight: "bold",
+                              color: "red",
+                            }}
+                          >
+                            {message}
+                          </div>
+                          <div
+                            className="tab-pane"
+                            id="metadata"
+                            style={{ cursor: "pointer" }}
+                          >
                             <ul className="pager wizard twitter-bs-wizard-pager-link">
                               <li className="float-end">
-                                <a href="#">
+                                <a
+                                  onClick={() => {
+                                    fetchAddActualite();
+                                  }}
+                                >
                                   Save Changes{" "}
                                   <i className="mdi mdi-arrow-right ml-1"></i>
                                 </a>
