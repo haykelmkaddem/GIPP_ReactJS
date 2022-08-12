@@ -161,7 +161,7 @@ const SalonDelails = ({ route, navigation }) => {
       });
   }
   return (
-    <div className="perso-badge">
+    <div className="perso-badge bg-white">
       <Header />
       {isLoading && (
         <div className="container my-main mb-5">
@@ -375,8 +375,8 @@ const SalonDelails = ({ route, navigation }) => {
             <br />
             <br />
             <br />
-            <div className="row mb-5 pb-5">
-              <div className="col-md-12">
+            <div className="row pb-5 bg-white">
+              {/* <div className="col-md-12">
                 {!isLoadingV && verifReservation.data.message === "Acceptée" && (
                   <div
                     className="breadcrumb-wrapper d-flex align-items-center justify-content-center"
@@ -394,17 +394,67 @@ const SalonDelails = ({ route, navigation }) => {
                     </button>
                   </div>
                 )}
-              </div>
-              <div className="col-md-1 mb-5"></div>
-              <div className="col-md-10">
-                <p style={{ marginBottom: 50, color: "#0e204d", fontSize: 18 }}>
+              </div> */}
+              <h1
+                style={{
+                  textAlign: "center",
+                  textTransform: "uppercase",
+                  width: "100%",
+                  marginTop: "50px",
+                }}
+              >
+                à propos du salon
+                <hr />
+              </h1>
+
+              <div className="col-md-6">
+                <p
+                  style={{
+                    marginBottom: 50,
+                    color: "#0e204d",
+                    fontSize: 16,
+                    textAlign: "center",
+                  }}
+                >
                   {salonDetails.data.description}
                 </p>
               </div>
+              <div className="col-md-6">
+                <img
+                  src={`http://127.0.0.1:8000/uploads/${salonDetails.data.affiche}`}
+                  alt="salon"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </div>
+
+              <hr className="w-100" />
             </div>
+            <div
+              className="row mb-5 pb-5 bg-secondary"
+              style={{ backgroundColor: "#1D2A4D", borderRadius: "15px" }}
+            ></div>
           </div>
         </>
       )}
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
 
       <Footer />
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>

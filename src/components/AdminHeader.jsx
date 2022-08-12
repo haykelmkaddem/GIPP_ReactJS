@@ -16,40 +16,31 @@ const AdminHeader = () => {
         <header id="page-topbar">
           <div className="navbar-header">
             <div className="d-flex">
-              <div className="navbar-brand-box">
-                <a href="index.html" className="logo logo-dark">
-                  <span className="logo-sm">
-                    <img
-                      src="/assets/BackOffice/images/logo-sm.png"
-                      alt=""
-                      height="22"
-                    />
-                  </span>
-                  <span className="logo-lg">
-                    <img
-                      src="/assets/BackOffice/images/logo-dark.png"
-                      alt=""
-                      height="20"
-                    />
-                  </span>
-                </a>
-
-                <a href="index.html" className="logo logo-light">
-                  <span className="logo-sm">
-                    <img
-                      src="/assets/BackOffice/images/logo-sm.png"
-                      alt=""
-                      height="22"
-                    />
-                  </span>
-                  <span className="logo-lg">
-                    <img
-                      src="/assets/BackOffice/images/logo-light.png"
-                      alt=""
-                      height="20"
-                    />
-                  </span>
-                </a>
+              <div
+                className="navbar-brand-box"
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img
+                  src="/assets/FrontOffice/images/1-aqvo-logo.png"
+                  alt=""
+                  height="50"
+                />
+                <div
+                  style={{
+                    color: "black",
+                    marginLeft: 8,
+                    marginTop: 8,
+                    fontSize: 24,
+                    fontWeight: "bold",
+                  }}
+                >
+                  GIPP
+                </div>
               </div>
 
               <button
@@ -59,21 +50,6 @@ const AdminHeader = () => {
               >
                 <i className="mdi mdi-menu"></i>
               </button>
-
-              <div className="topbar-social-icon me-3 d-none d-md-block">
-                <ul className="list-inline title-tooltip m-0">
-                  <li className="list-inline-item">
-                    <a
-                      href="email-inbox.html"
-                      data-bs-toggle="tooltip"
-                      data-placement="top"
-                      title="Email"
-                    >
-                      <i className="mdi mdi-email-outline"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </div>
             <div className="search-wrap" id="search-wrap">
               <div className="search-bar">
@@ -136,27 +112,6 @@ const AdminHeader = () => {
                             </p>
                             <p className="mb-0">
                               <i className="mdi mdi-clock-outline"></i> 3 min
-                              ago
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                    <a href="#" className="text-reset notification-item">
-                      <div className="media">
-                        <img
-                          src="/assets/BackOffice/images/users/avatar-3.jpg"
-                          className="me-3 rounded-circle avatar-xs"
-                          alt="user-pic"
-                        />
-                        <div className="media-body">
-                          <h6 className="mt-0 mb-1">James Lemire</h6>
-                          <div className="font-size-13 text-muted">
-                            <p className="mb-1">
-                              It will seem like simplified English.
-                            </p>
-                            <p className="mb-0">
-                              <i className="mdi mdi-clock-outline"></i> 1 hours
                               ago
                             </p>
                           </div>
@@ -229,11 +184,6 @@ const AdminHeader = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <img
-                    className="rounded-circle header-profile-user"
-                    src="/assets/BackOffice/images/users/avatar-7.jpg"
-                    alt="Header Avatar"
-                  />
                   <span className="d-none d-xl-inline-block ms-1">
                     {localStorage.getItem("prenom")}
                   </span>
@@ -258,7 +208,7 @@ const AdminHeader = () => {
                     style={{ cursor: "pointer" }}
                   >
                     <i className="mdi mdi-power font-size-16 align-middle me-1 text-danger"></i>
-                    Logout
+                    Déconnexion
                   </a>
                 </div>
               </div>
@@ -268,13 +218,17 @@ const AdminHeader = () => {
         <div className="vertical-menu">
           <div data-simplebar className="h-100">
             <div className="user-sidebar text-center">
-              <div className="dropdown">
-                <div className="user-img">
-                  <img
-                    src="/assets/BackOffice/images/users/avatar-7.jpg"
-                    alt=""
-                    className="rounded-circle"
-                  />
+              <div
+                className="dropdown"
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: 124,
+                }}
+              >
+                <div className="user-img" style={{ marginRight: 5 }}>
                   <span className="avatar-online bg-success"></span>
                 </div>
                 <div className="user-info">
@@ -283,7 +237,7 @@ const AdminHeader = () => {
                     {localStorage.getItem("nom")}
                   </h5>
                   <span className="font-size-13 text-white-50">
-                    Administrator
+                    Administrateur
                   </span>
                 </div>
               </div>
@@ -315,7 +269,7 @@ const AdminHeader = () => {
                   <li>
                     <a className=" waves-effect">
                       <i class="dripicons-basket"></i>
-                      <span>Products</span>
+                      <span>Produits</span>
                     </a>
                   </li>
                 </NavLink>
@@ -326,7 +280,7 @@ const AdminHeader = () => {
                       <span className="badge rounded-pill bg-info float-end">
                         3
                       </span>
-                      <span>Orders</span>
+                      <span>Commandes</span>
                     </a>
                   </li>
                 </NavLink>
@@ -334,7 +288,7 @@ const AdminHeader = () => {
                   <li>
                     <a className=" waves-effect">
                       <i class="dripicons-user-group"></i>
-                      <span>Users</span>
+                      <span>Utilisateurs</span>
                     </a>
                   </li>
                 </NavLink>
@@ -350,7 +304,7 @@ const AdminHeader = () => {
                   <li>
                     <a className=" waves-effect">
                       <i class="dripicons-to-do"></i>
-                      <span>Actualities</span>
+                      <span>Actualités</span>
                     </a>
                   </li>
                 </NavLink>
@@ -358,7 +312,7 @@ const AdminHeader = () => {
                   <li>
                     <a className=" waves-effect">
                       <i class="dripicons-message"></i>
-                      <span>Comments</span>
+                      <span>Avis</span>
                     </a>
                   </li>
                 </NavLink>

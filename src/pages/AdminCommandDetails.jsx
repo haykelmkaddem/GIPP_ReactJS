@@ -150,33 +150,73 @@ const AdminCommandDetails = ({ route, navigation }) => {
                               {commandeDetails.reference}
                             </div>
                             <div className="col-md-6">
-                              <h3>Représentant de l'entreprise :</h3>
-                              <p>
-                                {commandeDetails.user.prenom}{" "}
-                                {commandeDetails.user.nom}
-                              </p>
-                              <p>{commandeDetails.user.email}</p>
-                              <p>{commandeDetails.user.telephone}</p>
+                              <div
+                                style={{
+                                  textAlign: "center",
+                                  marginTop: 25,
+                                  border: "0.5px solid #0e204d",
+                                  borderRadius: 15,
+                                  padding: 15,
+                                }}
+                              >
+                                <h3>Représentant de l'entreprise :</h3>
+                                <p>
+                                  {commandeDetails.user.prenom}{" "}
+                                  {commandeDetails.user.nom}
+                                </p>
+                                <p>{commandeDetails.user.email}</p>
+                                <p>{commandeDetails.user.telephone}</p>
+                              </div>
                             </div>
                             <div className="col-md-6">
-                              <h3>Entreprise :</h3>
-                              <p>{commandeDetails.user.entreprise.nom}</p>
-                              <p>{commandeDetails.user.entreprise.adresse}</p>
-                              <p>
-                                {commandeDetails.user.entreprise.code_postal}{" "}
-                                {commandeDetails.user.entreprise.pays}
-                              </p>
+                              <div
+                                style={{
+                                  textAlign: "center",
+                                  marginTop: 25,
+                                  border: "0.5px solid #0e204d",
+                                  borderRadius: 15,
+                                  padding: 15,
+                                }}
+                              >
+                                <h3>Entreprise :</h3>
+                                <p>{commandeDetails.user.entreprise.nom}</p>
+                                <p>{commandeDetails.user.entreprise.adresse}</p>
+                                <p>
+                                  {commandeDetails.user.entreprise.code_postal}{" "}
+                                  {commandeDetails.user.entreprise.pays}
+                                </p>
+                              </div>
                             </div>
                             <div className="col-md-6">
-                              <h3>Mode de paiement :</h3>
-                              <p>{commandeDetails.methode_de_paiement}</p>
+                              <div
+                                style={{
+                                  textAlign: "center",
+                                  marginTop: 25,
+                                  border: "0.5px solid #0e204d",
+                                  borderRadius: 15,
+                                  padding: 15,
+                                }}
+                              >
+                                <h3>Mode de paiement :</h3>
+                                <p>{commandeDetails.methode_de_paiement}</p>
+                              </div>
                             </div>
                             <div className="col-md-6">
-                              <h3>Date de création :</h3>
-                              <p>
-                                {commandeDetails.created_at.substr(0, 10)}{" "}
-                                {commandeDetails.created_at.substr(11, 5)}
-                              </p>
+                              <div
+                                style={{
+                                  textAlign: "center",
+                                  marginTop: 25,
+                                  border: "0.5px solid #0e204d",
+                                  borderRadius: 15,
+                                  padding: 15,
+                                }}
+                              >
+                                <h3>Date de création :</h3>
+                                <p>
+                                  {commandeDetails.created_at.substr(0, 10)}{" "}
+                                  {commandeDetails.created_at.substr(11, 5)}
+                                </p>
+                              </div>
                             </div>
                             <br />
                             <br />
@@ -184,7 +224,7 @@ const AdminCommandDetails = ({ route, navigation }) => {
                             <br />
                             <br />
                             <br />
-                            <div className="col-md-12">
+                            <div className="col-md-12 mt-5">
                               <table
                                 className="table table-centered datatable dt-responsive nowrap "
                                 style={{
@@ -207,8 +247,8 @@ const AdminCommandDetails = ({ route, navigation }) => {
                                       <tr key={index}>
                                         <td>{product.nom}</td>
                                         <td>{product.quantite}</td>
-                                        <td>{product.prix} Dt</td>
-                                        <td>{product.totale} Dt</td>
+                                        <td>{product.prix} TND</td>
+                                        <td>{product.totale} TND</td>
                                       </tr>
                                     )
                                   )}
