@@ -74,32 +74,32 @@ const AdminProductAdd = () => {
 
   function fetchAddProduct() {
     if (nom == "" || nomAr == "" || nomEn == "" || nomIt == "") {
-      setMessage("Please complete the Name");
+      setMessage("Veuillez remplir tous les champs nom");
     } else if (stock == "" || stock < 0) {
-      setMessage("Please complete the Stock");
+      setMessage("Veuillez entrer un stock valide");
     } else if (price == "" || price < 0) {
-      setMessage("Please complete the Price");
+      setMessage("Veuillez entrer un prix valide");
     } else if (min == "" || min < 0) {
-      setMessage("Please complete the Min");
+      setMessage("Veuillez entrer un prix minimum valide");
     } else if (max == "" || max < 0) {
-      setMessage("Please complete the Max");
+      setMessage("Veuillez entrer un prix maximum valide");
     } else if (parseInt(min) > parseInt(max)) {
-      setMessage("Min must be less than max");
+      setMessage("Le prix minimum doit être inférieur au prix maximum");
     } else if (parseInt(max) > parseInt(stock)) {
-      setMessage("Max must be less than stock");
+      setMessage("Le prix maximum doit être inférieur au stock");
     } else if (discount != "" && discount < 0) {
-      setMessage("Please complete the Discount");
+      setMessage("Veuillez entrer un pourcentage de réduction valide");
     } else if (categorie == 0) {
-      setMessage("Please select a Categorie");
+      setMessage("Veuillez choisir une catégorie");
     } else if (
       description == "" ||
       descriptionAr == "" ||
       descriptionEn == "" ||
       descriptionIt == ""
     ) {
-      setMessage("Please complete the Description");
+      setMessage("Veuillez remplir tous les champs Description");
     } else if (images.length == 0) {
-      setMessage("Please upload an image");
+      setMessage("Veuillez ajouter des images");
     } else {
       formdatastate.append("nom", nom);
       formdatastate.append("nomAr", nomAr);

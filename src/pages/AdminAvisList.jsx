@@ -33,12 +33,12 @@ const AdminAvisList = () => {
 
     swalWithBootstrapButtons
       .fire({
-        title: "Are You Sure ?",
-        text: "You can't go back!",
+        title: "Êtes-vous sûr?",
+        text: "Vous ne pourrez pas récupérer ce avis!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Delete",
-        cancelButtonText: "Cancel",
+        confirmButtonText: "Oui, supprimez-le!",
+        cancelButtonText: "Non, annulez!",
         reverseButtons: true,
       })
       .then((result) => {

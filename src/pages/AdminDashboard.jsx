@@ -46,7 +46,7 @@ const AdminDashboard = () => {
   });
   const [series, setSeries] = useState([
     {
-      name: "product Statistic",
+      name: "Statistique de produit",
       data: [],
     },
   ]);

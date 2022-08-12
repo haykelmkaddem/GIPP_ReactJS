@@ -34,11 +34,11 @@ const AdminActualiteAdd = () => {
 
   function fetchAddActualite() {
     if (titre == "") {
-      setMessage("Please complete the Title");
+      setMessage("Veuillez entrer un titre");
     } else if (description == "") {
-      setMessage("Please complete the Description");
+      setMessage("Veuillez entrer une description");
     } else if (images.length == 0) {
-      setMessage("Please complete the Image");
+      setMessage("Veuillez ajouter une image");
     } else {
       formdatastate.append("titre", titre);
       formdatastate.append("description", description);

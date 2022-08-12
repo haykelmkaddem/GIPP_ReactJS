@@ -34,20 +34,20 @@ const AdminCategoryList = () => {
 
     swalWithBootstrapButtons
       .fire({
-        title: "Are You Sure ?",
-        text: "You can't go back!",
+        title: "Êtes-vous sûr?",
+        text: "Vous ne pourrez pas récupérer cette catégorie!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Delete",
-        cancelButtonText: "Cancel",
+        confirmButtonText: "Oui, supprimez-la!",
+        cancelButtonText: "Non, annulez!",
         reverseButtons: true,
       })
       .then((result) => {
         if (result.isConfirmed) {
           fetchdeleteCategory(catId);
           swalWithBootstrapButtons.fire(
-            "Deleted!",
-            "Category Deleted !",
+            "Supprimée!",
+            "Catégorie Supprimée !",
             "success"
           );
         } else if (
@@ -55,8 +55,8 @@ const AdminCategoryList = () => {
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
-            "Canceled",
-            "Deletion has been canceled :)",
+            "Annulée",
+            "Suppression annulée :)",
             "error"
           );
         }
@@ -130,7 +130,9 @@ const AdminCategoryList = () => {
                           <a>GIPP</a>
                         </NavLink>
                       </li>
-                      <li class="breadcrumb-item active">Liste des Categories</li>
+                      <li class="breadcrumb-item active">
+                        Liste des Categories
+                      </li>
                     </ol>
                   </div>
                 </div>

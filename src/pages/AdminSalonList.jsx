@@ -34,20 +34,20 @@ const AdminSalonList = () => {
 
     swalWithBootstrapButtons
       .fire({
-        title: "Are You Sure ?",
-        text: "You can't go back!",
+        title: "Are you sure?",
+        text: "vous ne pourrez pas récupérer ce salon!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Delete",
-        cancelButtonText: "Cancel",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
         reverseButtons: true,
       })
       .then((result) => {
         if (result.isConfirmed) {
           fetchdeleteSalon(salonId);
           swalWithBootstrapButtons.fire(
-            "Deleted!",
-            "Salon Deleted !",
+            "Supprimé!",
+            "Salon Supprimé !",
             "success"
           );
         } else if (
@@ -55,8 +55,8 @@ const AdminSalonList = () => {
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
-            "Canceled",
-            "Deletion has been canceled :)",
+            "Annulé",
+            "Suppression annulée :)",
             "error"
           );
         }

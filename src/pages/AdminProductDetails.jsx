@@ -99,20 +99,20 @@ const AdminProductDetails = ({ route, navigation }) => {
 
     swalWithBootstrapButtons
       .fire({
-        title: "Are You Sure ?",
-        text: "You can't go back!",
+        title: "Voulez-vous vraiment supprimer ce produit ?",
+        text: "Cette action est irréversible!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Delete",
-        cancelButtonText: "Cancel",
+        confirmButtonText: "Oui, supprimer!",
+        cancelButtonText: "Non, annuler!",
         reverseButtons: true,
       })
       .then((result) => {
         if (result.isConfirmed) {
           fetchDeleteProduct(pId);
           swalWithBootstrapButtons.fire(
-            "Deleted!",
-            "Product Deleted !",
+            "Supprimé!",
+            "Le produit a été supprimé.",
             "success"
           );
         } else if (
@@ -120,8 +120,8 @@ const AdminProductDetails = ({ route, navigation }) => {
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
-            "Canceled",
-            "Deletion has been canceled :)",
+            "Annulé",
+            "Le produit n'a pas été supprimé.",
             "error"
           );
         }

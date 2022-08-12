@@ -22,7 +22,7 @@ const AdminCategoryAdd = () => {
 
   function fetchAddCategory() {
     if (nom === "") {
-      setMessage("Please complete the Name");
+      setMessage("Veuillez entrer un nom");
     } else {
       axios
         .post(ADD_CATEGORY_URL, {

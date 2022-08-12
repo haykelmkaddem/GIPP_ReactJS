@@ -55,7 +55,7 @@ const AdminProductEdit = () => {
     Swal.fire({
       position: "center",
       icon: "success",
-      title: "Image deleted successfully",
+      title: "Image supprimée avec succès", //"Image supprimée",
       showConfirmButton: false,
       timer: 1500,
     });
