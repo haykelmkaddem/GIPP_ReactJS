@@ -12,15 +12,17 @@ const AdminAvisAdd = () => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Add Product</h4>
+                    <h4>Ajouter un produit</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <a href="javascript: void(0);">GIPP</a>
                       </li>
                       <li className="breadcrumb-item">
-                        <a href="javascript: void(0);">Ecommerce</a>
+                        <a href="javascript: void(0);">E-commerce</a>
                       </li>
-                      <li className="breadcrumb-item active">Add Product</li>
+                      <li className="breadcrumb-item active">
+                        Ajouter un produit
+                      </li>
                     </ol>
                   </div>
                 </div>

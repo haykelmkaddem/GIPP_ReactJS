@@ -69,7 +69,7 @@ const AdminCategoryEdit = () => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Edit Category</h4>
+                    <h4>Modifier la catégorie</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <NavLink to="/admindashboard">
@@ -81,7 +81,9 @@ const AdminCategoryEdit = () => {
                           <a>Categories</a>
                         </NavLink>
                       </li>
-                      <li className="breadcrumb-item active">Edit Category</li>
+                      <li className="breadcrumb-item active">
+                        Modifier la catégorie
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -110,9 +112,11 @@ const AdminCategoryEdit = () => {
                       >
                         <div className=" twitter-bs-wizard-tab-content">
                           <div className="tab-pane" id="basic-info">
-                            <h4 className="header-title">Basic Information</h4>
+                            <h4 className="header-title">
+                              Informations de base
+                            </h4>
                             <p className="card-title-desc">
-                              Fill all information below
+                              Remplissez toutes les informations ci-dessous
                             </p>
                             {isLoading && (
                               <div
@@ -130,7 +134,7 @@ const AdminCategoryEdit = () => {
                                     className="form-label"
                                     htmlFor="productname"
                                   >
-                                    Category Name
+                                    Nom de catégorie
                                   </label>
                                   <input
                                     id="productname"
@@ -157,7 +161,7 @@ const AdminCategoryEdit = () => {
                                       fetchEditCategory();
                                     }}
                                   >
-                                    Save Changes
+                                    Sauvegarder les modifications{" "}
                                     <i className="mdi mdi-arrow-right ml-1"></i>
                                   </a>
                                 </li>

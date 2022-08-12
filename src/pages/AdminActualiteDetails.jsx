@@ -51,7 +51,7 @@ const AdminActualiteDetails = () => {
               <div class="row align-items-center">
                 <div class="col-sm-6">
                   <div class="page-title">
-                    <h4>Actuality Details</h4>
+                    <h4>Détails de l'actualité</h4>
                     <ol class="breadcrumb m-0">
                       <li class="breadcrumb-item">
                         <NavLink to="/admindashboard">
@@ -60,10 +60,12 @@ const AdminActualiteDetails = () => {
                       </li>
                       <li class="breadcrumb-item">
                         <NavLink to="/adminactualitelist">
-                          <a>Actualities</a>
+                          <a>Actualités</a>
                         </NavLink>
                       </li>
-                      <li class="breadcrumb-item active">Actuality Details</li>
+                      <li class="breadcrumb-item active">
+                        Détails de l'actualité
+                      </li>
                     </ol>
                   </div>
                 </div>

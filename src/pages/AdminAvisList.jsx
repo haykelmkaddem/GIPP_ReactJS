@@ -122,14 +122,14 @@ const AdminAvisList = () => {
               <div class="row align-items-center">
                 <div class="col-sm-6">
                   <div class="page-title">
-                    <h4>Comments</h4>
+                    <h4>Avis</h4>
                     <ol class="breadcrumb m-0">
                       <li class="breadcrumb-item">
                         <NavLink to="/admindashboard">
                           <a>GIPP</a>
                         </NavLink>
                       </li>
-                      <li class="breadcrumb-item active">Comments</li>
+                      <li class="breadcrumb-item active">Avis</li>
                     </ol>
                   </div>
                 </div>
@@ -151,17 +151,7 @@ const AdminAvisList = () => {
               <div class="row">
                 <div class="col-lg-12">
                   <div class="card">
-                    <div class="card-body">
-                      <div>
-                        <NavLink to="/admindashboard">
-                          <a
-                            class="btn btn-success mb-2"
-                            style={{ color: "white" }}
-                          >
-                            Dashboard
-                          </a>
-                        </NavLink>
-                      </div>
+                    <div class="card-body pt-5">
                       {isLoading && (
                         <div
                           style={{ height: height - 100 }}
@@ -182,11 +172,11 @@ const AdminAvisList = () => {
                           >
                             <thead class="thead-light">
                               <tr>
-                                <th>Product Name</th>
-                                <th>User</th>
-                                <th>Company</th>
-                                <th> NB Stars</th>
-                                <th>Comment</th>
+                                <th>Nom du produit</th>
+                                <th>Utilisateur</th>
+                                <th>Entreprise</th>
+                                <th> NB des étoiles</th>
+                                <th>Avis</th>
                                 <th style={{ width: 120 }}>Action</th>
                               </tr>
                             </thead>

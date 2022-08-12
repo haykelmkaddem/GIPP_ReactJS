@@ -58,7 +58,7 @@ const AdminActualiteAdd = () => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Add Actualities</h4>
+                    <h4>Ajouter Actualité</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <NavLink to="/admindashboard">
@@ -67,11 +67,11 @@ const AdminActualiteAdd = () => {
                       </li>
                       <li className="breadcrumb-item">
                         <NavLink to="/adminactualitelist">
-                          <a>Actualities</a>
+                          <a>Actualités</a>
                         </NavLink>
                       </li>
                       <li className="breadcrumb-item active">
-                        Add Actualities
+                        Ajouter Actualité
                       </li>
                     </ol>
                   </div>
@@ -101,9 +101,11 @@ const AdminActualiteAdd = () => {
                       >
                         <div className=" twitter-bs-wizard-tab-content">
                           <div className="tab-pane" id="basic-info">
-                            <h4 className="header-title">Basic Information</h4>
+                            <h4 className="header-title">
+                              Informations de base
+                            </h4>
                             <p className="card-title-desc">
-                              Fill all information below
+                              Remplissez toutes les informations ci-dessous
                             </p>
 
                             <form>
@@ -112,7 +114,7 @@ const AdminActualiteAdd = () => {
                                   className="form-label"
                                   htmlFor="productname"
                                 >
-                                  Actuality Title
+                                  Titre d'actualité
                                 </label>
                                 <input
                                   id="productname"
@@ -132,7 +134,7 @@ const AdminActualiteAdd = () => {
                                   className="form-label"
                                   htmlFor="productdesc"
                                 >
-                                  Product Description
+                                  Description d'actualité
                                 </label>
                                 <textarea
                                   className="form-control"
@@ -152,9 +154,9 @@ const AdminActualiteAdd = () => {
                             </form>
                           </div>
                           <div className="tab-pane" id="product-img">
-                            <h4 className="header-title">Product Images</h4>
+                            <h4 className="header-title">Image d'actualité</h4>
                             <p className="card-title-desc">
-                              Upload product image
+                              Importer l'image d'actualité
                             </p>
                             <br />
                           </div>
@@ -188,7 +190,10 @@ const AdminActualiteAdd = () => {
                                       <i className="display-4 text-muted mdi mdi-cloud-download-outline"></i>
                                     </div>
 
-                                    <h4>Drop files here or click to upload.</h4>
+                                    <h4>
+                                      Déposez les fichiers ici ou cliquez pour
+                                      télécharger.
+                                    </h4>
                                   </div>
                                 </div>
 
@@ -259,7 +264,7 @@ const AdminActualiteAdd = () => {
                                     fetchAddActualite();
                                   }}
                                 >
-                                  Save Changes{" "}
+                                  Sauvegarder les modifications{" "}
                                   <i className="mdi mdi-arrow-right ml-1"></i>
                                 </a>
                               </li>

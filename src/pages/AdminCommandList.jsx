@@ -104,14 +104,14 @@ const AdminCommandList = () => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Orders</h4>
+                    <h4>Commandes</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <NavLink to="/admindashboard">
                           <a>GIPP</a>
                         </NavLink>
                       </li>
-                      <li className="breadcrumb-item active">Orders</li>
+                      <li className="breadcrumb-item active">Commandes</li>
                     </ol>
                   </div>
                 </div>
@@ -133,19 +133,7 @@ const AdminCommandList = () => {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="card">
-                    <div className="card-body">
-                      <div>
-                        <div>
-                          <NavLink to="/admindashboard">
-                            <a
-                              className="btn btn-success mb-2"
-                              style={{ color: "white" }}
-                            >
-                              Dashboard
-                            </a>
-                          </NavLink>
-                        </div>
-                      </div>
+                    <div className="card-body pt-5">
                       {isLoading && (
                         <div
                           style={{ height: height - 100 }}
@@ -167,12 +155,12 @@ const AdminCommandList = () => {
                           >
                             <thead className="thead-light">
                               <tr>
-                                <th>Reference</th>
-                                <th>Created At</th>
+                                <th>Référence</th>
+                                <th>Créé le</th>
                                 <th>Total</th>
-                                <th>Modified At</th>
-                                <th>Status</th>
-                                <th>Details</th>
+                                <th>Modifié le</th>
+                                <th>Statut</th>
+                                <th>Détails</th>
                               </tr>
                             </thead>
                             <tbody>

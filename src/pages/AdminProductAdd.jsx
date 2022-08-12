@@ -110,7 +110,7 @@ const AdminProductAdd = () => {
       formdatastate.append("min", min);
       formdatastate.append("max", max);
       if (discount == "") {
-        formdatastate.append("discount", "a");
+        formdatastate.append("discount", "");
       } else {
         formdatastate.append("discount", discount);
       }
@@ -165,7 +165,7 @@ const AdminProductAdd = () => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Add Product</h4>
+                    <h4>Ajouter un produit</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <NavLink to="/admindashboard">
@@ -174,10 +174,12 @@ const AdminProductAdd = () => {
                       </li>
                       <li className="breadcrumb-item">
                         <NavLink to="/adminproducts">
-                          <a>Products</a>
+                          <a>Liste des produits</a>
                         </NavLink>
                       </li>
-                      <li className="breadcrumb-item active">Add Product</li>
+                      <li className="breadcrumb-item active">
+                        Ajouter un produit
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -244,9 +246,11 @@ const AdminProductAdd = () => {
                             <Switch onChange={handleChange} checked={checked} />
                           </div>
                           <div className="tab-pane" id="basic-info">
-                            <h4 className="header-title">Basic Information</h4>
+                            <h4 className="header-title">
+                              Informations de base
+                            </h4>
                             <p className="card-title-desc">
-                              Fill all information below
+                              Remplissez toutes les informations ci-dessous
                             </p>
 
                             <form>
@@ -255,7 +259,7 @@ const AdminProductAdd = () => {
                                   className="form-label"
                                   htmlFor="productname"
                                 >
-                                  Product Name (Français)
+                                  Nom du produit (Français)
                                 </label>
                                 <input
                                   id="productname"
@@ -274,7 +278,7 @@ const AdminProductAdd = () => {
                                   className="form-label"
                                   htmlFor="productname"
                                 >
-                                  Product Name (Arabic)
+                                  Nom du produit (Arabic)
                                 </label>
                                 <input
                                   id="productname"
@@ -292,7 +296,7 @@ const AdminProductAdd = () => {
                                   className="form-label"
                                   htmlFor="productname"
                                 >
-                                  Product Name (English)
+                                  Nom du produit (English)
                                 </label>
                                 <input
                                   id="productname"
@@ -310,7 +314,7 @@ const AdminProductAdd = () => {
                                   className="form-label"
                                   htmlFor="productname"
                                 >
-                                  Product Name (Italien)
+                                  Nom du produit (Italien)
                                 </label>
                                 <input
                                   id="productname"
@@ -356,7 +360,7 @@ const AdminProductAdd = () => {
                                       className="form-label"
                                       htmlFor="manufacturerbrand"
                                     >
-                                      Price
+                                      Prix
                                     </label>
                                     <input
                                       id="manufacturerbrand"
@@ -384,7 +388,7 @@ const AdminProductAdd = () => {
                                       className="form-label"
                                       htmlFor="manufacturername"
                                     >
-                                      Minimum Quantity
+                                      Quantité Minimum
                                     </label>
                                     <input
                                       id="manufacturername"
@@ -407,7 +411,7 @@ const AdminProductAdd = () => {
                                       className="form-label"
                                       htmlFor="manufacturerbrand"
                                     >
-                                      Maximum Quantity
+                                      Quantité Maximum
                                     </label>
                                     <input
                                       id="manufacturerbrand"
@@ -430,7 +434,7 @@ const AdminProductAdd = () => {
                                       className="form-label"
                                       htmlFor="manufacturername"
                                     >
-                                      Discount
+                                      Réduction
                                     </label>
                                     <input
                                       id="manufacturername"
@@ -455,7 +459,7 @@ const AdminProductAdd = () => {
                                 <div className="col-md-6">
                                   <div className="mb-3">
                                     <label className="control-label">
-                                      Category
+                                      Categorie
                                     </label>
                                     <select
                                       id="country"
@@ -484,7 +488,7 @@ const AdminProductAdd = () => {
                                   className="form-label"
                                   htmlFor="productdesc"
                                 >
-                                  Product Description (Français)
+                                  Description du produit (Français)
                                 </label>
                                 <textarea
                                   className="form-control"
@@ -501,7 +505,7 @@ const AdminProductAdd = () => {
                                   className="form-label"
                                   htmlFor="productdesc"
                                 >
-                                  Product Description (Arabic)
+                                  Description du produit (Arabic)
                                 </label>
                                 <textarea
                                   className="form-control"
@@ -518,7 +522,7 @@ const AdminProductAdd = () => {
                                   className="form-label"
                                   htmlFor="productdesc"
                                 >
-                                  Product Description (English)
+                                  Description du produit (English)
                                 </label>
                                 <textarea
                                   className="form-control"
@@ -535,7 +539,7 @@ const AdminProductAdd = () => {
                                   className="form-label"
                                   htmlFor="productdesc"
                                 >
-                                  Product Description (Italien)
+                                  Description du produit (Italien)
                                 </label>
                                 <textarea
                                   className="form-control"
@@ -550,9 +554,9 @@ const AdminProductAdd = () => {
                             </form>
                           </div>
                           <div className="tab-pane" id="product-img">
-                            <h4 className="header-title">Product Images</h4>
+                            <h4 className="header-title">Images de produit</h4>
                             <p className="card-title-desc">
-                              Upload product image
+                              Importer des Images de Produit
                             </p>
                           </div>
                           <div className="App">
@@ -588,7 +592,8 @@ const AdminProductAdd = () => {
                                       </div>
 
                                       <h4>
-                                        Drop files here or click to upload.
+                                        Déposez les fichiers ici ou cliquez pour
+                                        télécharger.
                                       </h4>
                                     </div>
                                   </div>
@@ -597,7 +602,7 @@ const AdminProductAdd = () => {
                                       className="btn link text-danger"
                                       onClick={onImageRemoveAll}
                                     >
-                                      X Remove all images
+                                      X Supprimer toutes les images
                                     </button>
                                   )}
 
@@ -706,7 +711,7 @@ const AdminProductAdd = () => {
                                     fetchAddProduct();
                                   }}
                                 >
-                                  Save Changes
+                                  Sauvegarder les modifications{" "}
                                   <i className="mdi mdi-arrow-right ml-1"></i>
                                 </a>
                               </li>

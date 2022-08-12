@@ -123,14 +123,14 @@ const AdminActualiteList = () => {
               <div class="row align-items-center">
                 <div class="col-sm-6">
                   <div class="page-title">
-                    <h4>Actualities</h4>
+                    <h4>Actualités</h4>
                     <ol class="breadcrumb m-0">
                       <li class="breadcrumb-item">
                         <NavLink to="/admindashboard">
                           <a>GIPP</a>
                         </NavLink>
                       </li>
-                      <li class="breadcrumb-item active">Actualities</li>
+                      <li class="breadcrumb-item active">Actualités</li>
                     </ol>
                   </div>
                 </div>
@@ -159,7 +159,8 @@ const AdminActualiteList = () => {
                             className="btn btn-success mb-2"
                             style={{ color: "white" }}
                           >
-                            <i className="mdi mdi-plus me-2"></i> Add Actuality
+                            <i className="mdi mdi-plus me-2"></i> Ajouter
+                            Actualité
                           </a>
                         </NavLink>
                       </div>
@@ -183,11 +184,11 @@ const AdminActualiteList = () => {
                           >
                             <thead class="thead-light">
                               <tr>
-                                <th>Cover Image</th>
-                                <th>Title</th>
+                                <th>Image de couverture</th>
+                                <th>Titre</th>
                                 <th>Date</th>
                                 <th style={{ width: 120 }}>Action</th>
-                                <th style={{ width: 120 }}>Details</th>
+                                <th style={{ width: 120 }}>Détails</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -239,7 +240,7 @@ const AdminActualiteList = () => {
                                           );
                                         }}
                                       >
-                                        Details
+                                        Détails
                                       </span>
                                     </td>
                                   </tr>

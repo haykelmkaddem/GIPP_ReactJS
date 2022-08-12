@@ -171,11 +171,37 @@ const Settings = () => {
         </div>
       )}
       {!isLoading && (
-        <div className="my-main mt-5 mb-5">
+        <div className="my-main mt-3 mb-5">
           <div className="container ">
             <div className="row ">
-              <div className="col-md-8 p-0">
-                <h5>Mon Compte</h5>
+              <div className="col-md-10 p-0">
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    flexDirection: "row",
+                    marginBottom: 15,
+                  }}
+                >
+                  <h5>Mon Compte</h5>
+                  <div
+                    style={{
+                      color: "rgb(19, 198, 221)",
+                      cursor: "pointer",
+                      fontSize: "1.2rem",
+                    }}
+                    onClick={() => {
+                      navigate("/updatePassword");
+                    }}
+                  >
+                    <i
+                      className="fa fa-pencil-square-o"
+                      style={{ color: "rgb(19, 198, 221)", fontSize: 20 }}
+                    ></i>{" "}
+                    Modifier Mot De Passe
+                  </div>
+                </div>
 
                 <div class="container">
                   <div class="row">
@@ -320,11 +346,7 @@ const Settings = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-4">
-                <p style={{ fontSize: 18, cursor: "pointer" }}>
-                  <NavLink to="/updatePassword">Modifier Mot De Passe</NavLink>
-                </p>
-              </div>
+              <div className="col-md-4"></div>
             </div>
           </div>
         </div>

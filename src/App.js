@@ -41,6 +41,7 @@ import AdminSalonEdit from "./pages/AdminSalonEdit";
 import AdminActualiteEdit from "./pages/AdminActualiteEdit";
 import Verification from "./pages/Verification";
 import MessageVerfiMail from "./pages/MessageVerfiMail";
+import AdminProductEdit from "./pages/AdminProductEdit";
 
 const App = () => {
   return (
@@ -69,6 +70,7 @@ const App = () => {
         <Route path="/apropos" element={<Apropos />} />
         <Route path="/adminavislist" element={<AdminAvisList />} />
         <Route path="/adminaddproduct" element={<AdminProductAdd />} />
+        <Route path="/admineditproduct/:id" element={<AdminProductEdit />} />
         <Route
           path="/adminactualitedetails/:id"
           element={<AdminActualiteDetails />}

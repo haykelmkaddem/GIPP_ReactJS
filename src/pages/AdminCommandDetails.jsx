@@ -51,7 +51,7 @@ const AdminCommandDetails = ({ route, navigation }) => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Order Details</h4>
+                    <h4>Détails de la commande</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <NavLink to="/admindashboard">
@@ -60,10 +60,12 @@ const AdminCommandDetails = ({ route, navigation }) => {
                       </li>
                       <li className="breadcrumb-item">
                         <NavLink to="/admincommandlist">
-                          <a>Orders</a>
+                          <a>Liste des commandes</a>
                         </NavLink>
                       </li>
-                      <li className="breadcrumb-item active">Order Details</li>
+                      <li className="breadcrumb-item active">
+                        Détails de la commande
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -148,7 +150,7 @@ const AdminCommandDetails = ({ route, navigation }) => {
                               {commandeDetails.reference}
                             </div>
                             <div className="col-md-6">
-                              <h3>Company Representative :</h3>
+                              <h3>Représentant de l'entreprise :</h3>
                               <p>
                                 {commandeDetails.user.prenom}{" "}
                                 {commandeDetails.user.nom}
@@ -157,7 +159,7 @@ const AdminCommandDetails = ({ route, navigation }) => {
                               <p>{commandeDetails.user.telephone}</p>
                             </div>
                             <div className="col-md-6">
-                              <h3>Company :</h3>
+                              <h3>Entreprise :</h3>
                               <p>{commandeDetails.user.entreprise.nom}</p>
                               <p>{commandeDetails.user.entreprise.adresse}</p>
                               <p>
@@ -166,11 +168,11 @@ const AdminCommandDetails = ({ route, navigation }) => {
                               </p>
                             </div>
                             <div className="col-md-6">
-                              <h3>Payment method :</h3>
+                              <h3>Mode de paiement :</h3>
                               <p>{commandeDetails.methode_de_paiement}</p>
                             </div>
                             <div className="col-md-6">
-                              <h3>Creation date :</h3>
+                              <h3>Date de création :</h3>
                               <p>
                                 {commandeDetails.created_at.substr(0, 10)}{" "}
                                 {commandeDetails.created_at.substr(11, 5)}
@@ -193,9 +195,9 @@ const AdminCommandDetails = ({ route, navigation }) => {
                               >
                                 <thead className="thead-light">
                                   <tr>
-                                    <th>Product Name</th>
-                                    <th>Quantity</th>
-                                    <th>price</th>
+                                    <th>Nom de produit</th>
+                                    <th>Quantité</th>
+                                    <th>Prix</th>
                                     <th>Total</th>
                                   </tr>
                                 </thead>
@@ -214,7 +216,7 @@ const AdminCommandDetails = ({ route, navigation }) => {
                               </table>
                             </div>
                             <div className="col-md-6">
-                              <p>Total : {commandeDetails.totale} Dt</p>
+                              <p>Total : {commandeDetails.totale} TND</p>
                             </div>
                           </>
                         )}

@@ -349,14 +349,14 @@ const AdmProducts = () => {
 
                                 {product.discount !== null && (
                                   <h4 class="mt-3 mb-0">
-                                    {product.discount}Dt
+                                    {product.discount}TND
                                     <span class="font-size-14 text-muted me-2">
-                                      <del> {product.prix} Dt</del>
+                                      <del> {product.prix} TND</del>
                                     </span>
                                   </h4>
                                 )}
                                 {product.discount == null && (
-                                  <h4 class="mt-3 mb-0">{product.prix}Dt</h4>
+                                  <h4 class="mt-3 mb-0">{product.prix}TND</h4>
                                 )}
 
                                 {moyenRating.map((avis) => {
@@ -579,14 +579,14 @@ const AdmProducts = () => {
 
                               {product.discount !== null && (
                                 <h4 class="mt-3 mb-0">
-                                  {product.discount}Dt
+                                  {product.discount}TND
                                   <span class="font-size-14 text-muted me-2">
-                                    <del> {product.prix} Dt</del>
+                                    <del> {product.prix} TND</del>
                                   </span>
                                 </h4>
                               )}
                               {product.discount == null && (
-                                <h4 class="mt-3 mb-0">{product.prix}Dt</h4>
+                                <h4 class="mt-3 mb-0">{product.prix}TND</h4>
                               )}
 
                               {moyenRating.map((avis) => {
@@ -628,14 +628,16 @@ const AdmProducts = () => {
                 <div class="row align-items-center">
                   <div class="col-sm-6">
                     <div class="page-title">
-                      <h4>Products</h4>
+                      <h4>Liste des Produits</h4>
                       <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item">
                           <NavLink to="/admindashboard">
                             <a>GIPP</a>
                           </NavLink>
                         </li>
-                        <li class="breadcrumb-item active">Products</li>
+                        <li class="breadcrumb-item active">
+                          Liste des Produits
+                        </li>
                       </ol>
                     </div>
                   </div>
@@ -643,7 +645,7 @@ const AdmProducts = () => {
                     <NavLink to="/adminaddproduct">
                       <div class="float-end d-none d-sm-block">
                         <a class="btn btn-success" style={{ color: "white" }}>
-                          Add Product
+                          Ajouter un produits
                         </a>
                       </div>
                     </NavLink>
@@ -659,7 +661,7 @@ const AdmProducts = () => {
                     <div class="col-xl-3 col-lg-4">
                       <div class="card">
                         <div class="card-body">
-                          <h4 class="header-title">Filters</h4>
+                          <h4 class="header-title">Filtres</h4>
 
                           <div class="border p-3 rounded mt-4">
                             <h5
@@ -668,7 +670,7 @@ const AdmProducts = () => {
                                 height: 25,
                               }}
                             >
-                              Search
+                              rechercher
                             </h5>
 
                             <div class="search-box me-2 mt-1">
@@ -676,7 +678,7 @@ const AdmProducts = () => {
                                 <input
                                   type="text"
                                   class="form-control"
-                                  placeholder="Search..."
+                                  placeholder="rechercher..."
                                   defaultValue={search}
                                   onChange={(e) => {
                                     setSearch(e.target.value);

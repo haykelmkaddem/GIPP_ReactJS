@@ -26,6 +26,17 @@ const AdminSalonEdit = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [playOnce, setPlayOnce] = useState(false);
   const [salonDetails, setSalonDetails] = useState("");
+  const [images, setImages] = React.useState("");
+
+  let formData = new FormData();
+  const [formdatastate, setFormdatastate] = useState(formData);
+  const onChange = (imageList, addUpdateIndex) => {
+    const fileObjects = imageList.map((file) => {
+      formData.append("affiche", file.file, file.file.name);
+    });
+    setImages(imageList);
+    setFormdatastate(formData);
+  };
 
   const [titre, setTitre] = useState("");
   const [description, setDescription] = useState("");
@@ -34,6 +45,7 @@ const AdminSalonEdit = () => {
   const [fin, setFin] = useState("");
   const [place, setPlace] = useState("");
   const [maxInvitation, setMaxInvitation] = useState("");
+  const [dataImage, setDataImage] = useState("");
 
   function fetchSalonDetails() {
     axios
@@ -49,6 +61,7 @@ const AdminSalonEdit = () => {
         setFin(response.data.temps_fin);
         setPlace(response.data.lieu);
         setMaxInvitation(response.data.max_invitation);
+        setDataImage(response.data.affiche);
       })
       .finally(() => {
         setIsLoading(false);
@@ -56,20 +69,17 @@ const AdminSalonEdit = () => {
   }
 
   function fetchUpdateSalon() {
-    axios
-      .post(SALON_UPDATE_URL, {
-        salonId: id,
-        titre: titre,
-        description: description,
-        date: date,
-        temps_debut: debut,
-        temps_fin: fin,
-        lieu: place,
-        max_invitation: maxInvitation,
-      })
-      .finally(() => {
-        navigate("/adminsalonlist");
-      });
+    formdatastate.append("salonId", id);
+    formdatastate.append("titre", titre);
+    formdatastate.append("description", description);
+    formdatastate.append("date", date);
+    formdatastate.append("temps_debut", debut);
+    formdatastate.append("temps_fin", fin);
+    formdatastate.append("lieu", place);
+    formdatastate.append("max_invitation", maxInvitation);
+    axios.post(SALON_UPDATE_URL, formdatastate).finally(() => {
+      navigate("/adminsalonlist");
+    });
   }
 
   useEffect(() => {
@@ -89,7 +99,7 @@ const AdminSalonEdit = () => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Add Salon</h4>
+                    <h4>Modifier Salon</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <NavLink to="/admindashboard">
@@ -101,7 +111,7 @@ const AdminSalonEdit = () => {
                           <a>Salons</a>
                         </NavLink>
                       </li>
-                      <li className="breadcrumb-item active">Add Salon</li>
+                      <li className="breadcrumb-item active">Modifier Salon</li>
                     </ol>
                   </div>
                 </div>
@@ -140,10 +150,10 @@ const AdminSalonEdit = () => {
                           <div className=" twitter-bs-wizard-tab-content">
                             <div className="tab-pane" id="basic-info">
                               <h4 className="header-title">
-                                Basic Information
+                                Informations de base
                               </h4>
                               <p className="card-title-desc">
-                                Fill all information below
+                                Remplissez toutes les informations ci-dessous
                               </p>
 
                               <form>
@@ -152,7 +162,7 @@ const AdminSalonEdit = () => {
                                     className="form-label"
                                     htmlFor="productname"
                                   >
-                                    Salon Title
+                                    Titre du Salon
                                   </label>
                                   <input
                                     id="productname"
@@ -171,7 +181,7 @@ const AdminSalonEdit = () => {
                                         className="form-label"
                                         htmlFor="manufacturername"
                                       >
-                                        Start Time
+                                        Heure de début
                                       </label>
                                       <input
                                         id="manufacturername"
@@ -190,7 +200,7 @@ const AdminSalonEdit = () => {
                                         className="form-label"
                                         htmlFor="manufacturerbrand"
                                       >
-                                        End Time
+                                        Heure de fin
                                       </label>
                                       <input
                                         id="manufacturerbrand"
@@ -228,7 +238,7 @@ const AdminSalonEdit = () => {
                                     className="form-label"
                                     htmlFor="productdesc"
                                   >
-                                    Salon Description
+                                    Description du salon
                                   </label>
                                   <textarea
                                     className="form-control"
@@ -249,7 +259,7 @@ const AdminSalonEdit = () => {
                                     className="form-label"
                                     htmlFor="manufacturerbrand"
                                   >
-                                    Place
+                                    Lieu
                                   </label>
                                   <input
                                     id="manufacturerbrand"
@@ -268,7 +278,7 @@ const AdminSalonEdit = () => {
                                     className="form-label"
                                     htmlFor="manufacturerbrand"
                                   >
-                                    Max Invitation
+                                    Nombre Maximale des Invités
                                   </label>
                                   <input
                                     id="manufacturerbrand"
@@ -282,6 +292,141 @@ const AdminSalonEdit = () => {
                                 </div>
                               </div>
                             </div>
+                            <div className="tab-pane" id="product-img">
+                              <h4 className="header-title">Affiche</h4>
+                              <p className="card-title-desc">
+                                Importer l'affiche du salon
+                              </p>
+                              <br />
+                            </div>
+                            <ImageUploading
+                              single
+                              value={images}
+                              onChange={onChange}
+                              dataURLKey="data_url"
+                            >
+                              {({
+                                imageList,
+                                onImageUpload,
+                                onImageRemoveAll,
+                                onImageUpdate,
+                                onImageRemove,
+                                isDragging,
+                                dragProps,
+                              }) => (
+                                // write your building UI
+                                <>
+                                  <div
+                                    className="upload__image-wrapper dropzone d-flex justify-content-center align-items-center text-center"
+                                    onClick={onImageUpload}
+                                    {...dragProps}
+                                    style={
+                                      isDragging ? { color: "red" } : undefined
+                                    }
+                                  >
+                                    <div className="dz-message needsclick">
+                                      <div className="mb-3">
+                                        <i className="display-4 text-muted mdi mdi-cloud-download-outline"></i>
+                                      </div>
+
+                                      <h4>
+                                        Déposez les fichiers ici ou cliquez pour
+                                        télécharger.
+                                      </h4>
+                                    </div>
+                                  </div>
+
+                                  <div className="selected-images-container text-center w-100  d-flex p-3">
+                                    <div className="row">
+                                      {imageList.map((image, index) => (
+                                        <div className="col-2" key={index}>
+                                          <div
+                                            className="image-item"
+                                            style={{
+                                              width: 120,
+                                              height: 120,
+                                              paddingTop: 10,
+                                              position: "relative",
+                                            }}
+                                          >
+                                            <i
+                                              className="mdi mdi-progress-close"
+                                              style={{
+                                                color: "red",
+                                                fontSize: 25,
+                                                position: "absolute",
+                                                right: -12,
+                                                top: -11,
+                                                cursor: "pointer",
+                                              }}
+                                              onClick={() =>
+                                                onImageRemove(index)
+                                              }
+                                            ></i>
+                                            <div className="shake-admin">
+                                              <img
+                                                className="image-admin-shake"
+                                                style={{
+                                                  borderRadius: 15,
+                                                  width: 100,
+                                                  height: 100,
+                                                  border: "1px solid red",
+                                                }}
+                                                src={image["data_url"]}
+                                                alt=""
+                                              />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                  {images.length == 0 && (
+                                    <div className="selected-images-container text-center w-100  d-flex p-3">
+                                      <div className="row">
+                                        <div className="col-2">
+                                          <div
+                                            className="image-item"
+                                            style={{
+                                              width: 120,
+                                              height: 120,
+                                              paddingTop: 10,
+                                              position: "relative",
+                                            }}
+                                          >
+                                            <i
+                                              className="mdi mdi-progress-close"
+                                              style={{
+                                                color: "red",
+                                                fontSize: 25,
+                                                position: "absolute",
+                                                right: -12,
+                                                top: -11,
+                                                cursor: "pointer",
+                                              }}
+                                            ></i>
+
+                                            <div className="shake-admin">
+                                              <img
+                                                className="image-admin-shake"
+                                                style={{
+                                                  borderRadius: 15,
+                                                  width: 100,
+                                                  height: 100,
+                                                  border: "1px solid red",
+                                                }}
+                                                src={`http://127.0.0.1:8000/uploads/${dataImage}`}
+                                                alt=""
+                                              />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  )}
+                                </>
+                              )}
+                            </ImageUploading>
                             <div
                               className="tab-pane"
                               id="metadata"
@@ -294,7 +439,7 @@ const AdminSalonEdit = () => {
                                       fetchUpdateSalon();
                                     }}
                                   >
-                                    Save Changes{" "}
+                                    Sauvegarder les modifications{" "}
                                     <i className="mdi mdi-arrow-right ml-1"></i>
                                   </a>
                                 </li>

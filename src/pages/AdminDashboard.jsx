@@ -81,21 +81,6 @@ const AdminDashboard = () => {
       });
   }
 
-  // let options = {
-  //   chart: {
-  //     id: "basic-bar",
-  //   },
-  //   xaxis: {
-  //     categories: categoriesstat,
-  //   },
-  // };
-  // let series = [
-  //   {
-  //     name: "product Statistic",
-  //     data: dataforstat,
-  //   },
-  // ];
-
   const piee = {
     series: [44, 55, 41, 17, 15],
     options: {
@@ -205,7 +190,7 @@ const AdminDashboard = () => {
                   <NavLink to="/admincommandlist">
                     <div class="float-end d-none d-sm-block">
                       <a class="btn btn-success" style={{ color: "white" }}>
-                        Orders
+                        Commandes
                       </a>
                     </div>
                   </NavLink>
@@ -220,7 +205,7 @@ const AdminDashboard = () => {
                 <div class="col-xl-8">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="header-title mb-2">Quick Summary</h4>
+                      <h4 class="header-title mb-2">Résumé rapide</h4>
                       <div class="row align-items-center">
                         <div class="col-xl-12">
                           <div className="mixed-chart">
@@ -237,7 +222,9 @@ const AdminDashboard = () => {
                   </div>
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="header-title mb-4">Products of the Month</h4>
+                      <h4 class="header-title mb-4">
+                        les produits les plus consultés sur notre plateforme
+                      </h4>
                       <div className="donut d-flex align-items-center justify-content-center">
                         {vu.length > 0 && donutOptions != {} && (
                           <Chart
@@ -264,132 +251,6 @@ const AdminDashboard = () => {
                         <h5>{label}</h5>
                       </div>
                     ))}
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="header-title mb-4">Products of the Month</h4>
-                      <div class="table-responsive">
-                        <table class="table table-centered table-nowrap mb-0">
-                          <thead class="thead-light">
-                            <tr>
-                              <th>ID</th>
-                              <th>Product</th>
-
-                              <th>Customer</th>
-                              <th>Price</th>
-                              <th>Invoice</th>
-                              <th>Status</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>#2356</td>
-                              <td>
-                                <img
-                                  src="assets/images/product/img-7.png"
-                                  width="42"
-                                  class="me-3"
-                                  alt=""
-                                />
-                                Green Chair
-                              </td>
-                              <td>Kenneth Gittens</td>
-                              <td>$200.00</td>
-                              <td>42</td>
-                              <td>
-                                <span class="badge badge-pill badge-soft-primary font-size-13">
-                                  Pending
-                                </span>
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <td>#2564</td>
-                              <td>
-                                <img
-                                  src="assets/images/product/img-8.png"
-                                  width="42"
-                                  class="me-3"
-                                  alt=""
-                                />
-                                Office Chair
-                              </td>
-                              <td>Alfred Gordon</td>
-                              <td>$242.00</td>
-                              <td>54</td>
-                              <td>
-                                <span class="badge badge-pill badge-soft-success font-size-13">
-                                  Active
-                                </span>
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <td>#2125</td>
-                              <td>
-                                <img
-                                  src="assets/images/product/img-10.png"
-                                  width="42"
-                                  class="me-3"
-                                  alt=""
-                                />
-                                Gray Chair
-                              </td>
-                              <td>Keena Reyes</td>
-                              <td>$320.00</td>
-                              <td>65</td>
-                              <td>
-                                <span class="badge badge-pill badge-soft-success font-size-13">
-                                  Active
-                                </span>
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <td>#8587</td>
-                              <td>
-                                <img
-                                  src="assets/images/product/img-11.png"
-                                  width="42"
-                                  class="me-3"
-                                  alt=""
-                                />
-                                Steel Chair
-                              </td>
-                              <td>Timothy Zuniga</td>
-                              <td>$342.00</td>
-                              <td>52</td>
-                              <td>
-                                <span class="badge badge-pill badge-soft-primary font-size-13">
-                                  Pending
-                                </span>
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <td>#2354</td>
-                              <td>
-                                <img
-                                  src="assets/images/product/img-12.png"
-                                  width="42"
-                                  class="me-3"
-                                  alt=""
-                                />
-                                Home Chair
-                              </td>
-                              <td>Joann Wiliams</td>
-                              <td>$320.00</td>
-                              <td>25</td>
-                              <td>
-                                <span class="badge badge-pill badge-soft-primary font-size-13">
-                                  Pending
-                                </span>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
                 <div class="col-xl-4">
@@ -398,7 +259,7 @@ const AdminDashboard = () => {
                       <div class="card">
                         <div class="card-body">
                           <div class="text-center">
-                            <p class="font-size-16">Orders</p>
+                            <p class="font-size-16">Commandes</p>
                             <div class="mini-stat-icon mx-auto mb-4 mt-3">
                               <span class="avatar-title rounded-circle bg-soft-primary">
                                 <i class="mdi mdi-cart-outline text-primary font-size-20"></i>
@@ -414,7 +275,7 @@ const AdminDashboard = () => {
                       <div class="card">
                         <div class="card-body">
                           <div class="text-center">
-                            <p class="font-size-16">Users</p>
+                            <p class="font-size-16">Utilisateurs</p>
                             <div class="mini-stat-icon mx-auto mb-4 mt-3">
                               <span class="avatar-title rounded-circle bg-soft-success">
                                 <i class="mdi mdi-account-outline text-success font-size-20"></i>
@@ -427,7 +288,7 @@ const AdminDashboard = () => {
                     </div>
                     <div class="card">
                       <div class="card-body">
-                        <h4 class="header-title mb-4">Total Earning</h4>
+                        <h4 class="header-title mb-4">Gain total</h4>
 
                         <div class="mt-2 text-center">
                           <div class="row">
@@ -439,10 +300,10 @@ const AdminDashboard = () => {
                                   dir="ltr"
                                 ></div>
                                 <p class="text-muted mb-2 mt-2 pt-1">
-                                  Total Earning:
+                                  Gain total:
                                 </p>
                                 <h5 class="font-size-18 mb-1">
-                                  Dinar <br />
+                                  TND <br />
                                   {total}
                                 </h5>
                               </div>
@@ -457,185 +318,14 @@ const AdminDashboard = () => {
                                 ></div>
 
                                 <p class="text-muted mb-2 mt-2 pt-1">
-                                  Last Earning:
+                                  Dernier gain :
                                 </p>
                                 {!isLoading && (
                                   <h5 class="font-size-18 mb-1">
-                                    Dinar <br />
+                                    TND <br />
                                     {totallast}
                                   </h5>
                                 )}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="header-title mb-4">Best Selling Product</h4>
-
-                      <div
-                        id="carouselExampleIndicators"
-                        class="carousel slide"
-                        data-bs-ride="carousel"
-                      >
-                        <div class="carousel-indicators">
-                          <button
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="0"
-                            class="active"
-                            aria-current="true"
-                            aria-label="Slide 1"
-                          ></button>
-                          <button
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="1"
-                            aria-label="Slide 2"
-                          ></button>
-                          <button
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="2"
-                            aria-label="Slide 3"
-                          ></button>
-                        </div>
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <div class="row align-items-center mb-5">
-                              <div class="col-md-4">
-                                <img
-                                  src="assets/images/product/img-3.png"
-                                  class="img-fluid me-3"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="col-md-7 offset-md-1">
-                                <div class="mt-4 mt-sm-0">
-                                  <p class="text-muted mb-2">Headphone</p>
-
-                                  <h5 class="text-primary">Blue Headphone</h5>
-
-                                  <div class="row no-gutters mt-4">
-                                    <div class="col-4">
-                                      <div class="mt-1">
-                                        <h4>1200</h4>
-                                        <p class="text-muted mb-1">Sold</p>
-                                      </div>
-                                    </div>
-                                    <div class="col-4">
-                                      <div class="mt-1">
-                                        <h4>450</h4>
-                                        <p class="text-muted mb-1">Stock</p>
-                                      </div>
-                                    </div>
-
-                                    <div class="col-4">
-                                      <div class="mt-4 pt-1">
-                                        <a
-                                          href="#"
-                                          class="btn btn-primary btn-sm"
-                                        >
-                                          Buy Now
-                                        </a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="carousel-item">
-                            <div class="row align-items-center mb-5">
-                              <div class="col-md-4">
-                                <img
-                                  src="assets/images/product/img-5.png"
-                                  class="img-fluid me-3"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="col-md-7 offset-md-1">
-                                <div class="mt-4 mt-sm-0">
-                                  <p class="text-muted mb-2">T-shirt</p>
-
-                                  <h5 class="text-primary">Blue T-shirt</h5>
-
-                                  <div class="row no-gutters mt-4">
-                                    <div class="col-4">
-                                      <div class="mt-1">
-                                        <h4>800</h4>
-                                        <p class="text-muted mb-1">Sold</p>
-                                      </div>
-                                    </div>
-                                    <div class="col-4">
-                                      <div class="mt-1">
-                                        <h4>250</h4>
-                                        <p class="text-muted mb-1">Stock</p>
-                                      </div>
-                                    </div>
-
-                                    <div class="col-4">
-                                      <div class="mt-4 pt-1">
-                                        <a
-                                          href="#"
-                                          class="btn btn-primary btn-sm"
-                                        >
-                                          Buy Now
-                                        </a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="carousel-item">
-                            <div class="row align-items-center mb-5">
-                              <div class="col-md-4">
-                                <img
-                                  src="assets/images/product/img-1.png"
-                                  class="img-fluid me-3"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="col-md-7 offset-md-1">
-                                <div class="mt-4 mt-sm-0">
-                                  <p class="text-muted mb-2">Sonic</p>
-
-                                  <h5 class="text-primary">Alarm clock</h5>
-
-                                  <div class="row no-gutters mt-4">
-                                    <div class="col-4">
-                                      <div class="mt-1">
-                                        <h4>600</h4>
-                                        <p class="text-muted mb-1">Sold</p>
-                                      </div>
-                                    </div>
-                                    <div class="col-4">
-                                      <div class="mt-1">
-                                        <h4>150</h4>
-                                        <p class="text-muted mb-1">Stock</p>
-                                      </div>
-                                    </div>
-
-                                    <div class="col-4">
-                                      <div class="mt-4 pt-1">
-                                        <a
-                                          href="#"
-                                          class="btn btn-primary btn-sm"
-                                        >
-                                          Buy Now
-                                        </a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
                               </div>
                             </div>
                           </div>

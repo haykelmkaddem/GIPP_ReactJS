@@ -1,5 +1,6 @@
 import React from "react";
 import AdminHeader from "../components/AdminHeader";
+import ImageUploading from "react-images-uploading";
 import { AiFillDelete } from "react-icons/ai";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
@@ -12,10 +13,12 @@ import { useNavigate } from "react-router-dom";
 const ADD_SALON_URL = "http://127.0.0.1:8000/salon/new";
 
 const AdminSalonAdd = () => {
+  const [images, setImages] = React.useState("");
   const navigate = useNavigate();
   const [imageBack, setImageBack] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [playOnce, setPlayOnce] = useState(false);
+  const [formdatastate, setFormdatastate] = useState([]);
 
   // const [today, setToday] = useState(new Date());
   const disablePastDate = () => {
@@ -34,34 +37,44 @@ const AdminSalonAdd = () => {
   const [maxInvitation, setMaxInvitation] = useState("");
   const [message, setMessage] = useState("");
 
+  let formData = new FormData();
+  const onChange = (imageList, addUpdateIndex) => {
+    const fileObjects = imageList.map((file) => {
+      formData.append("affiche", file.file, file.file.name);
+    });
+    setImages(imageList);
+    setFormdatastate(formData);
+  };
+
   function fetchAddSalon() {
     if (titre === "") {
-      setMessage("Please complete the Title");
+      setMessage("Veuillez compléter le titre");
     } else if (debut === "") {
-      setMessage("Please complete the Begin");
+      setMessage("Veuillez compléter la date de début");
     } else if (fin === "") {
-      setMessage("Please complete the End");
+      setMessage("Veuillez compléter la date de fin");
     } else if (debut >= fin) {
-      setMessage("Begin date must be before End date");
+      setMessage("La date de début doit être inférieure à la date de fin");
     } else if (date === "") {
-      setMessage("Please complete the Date");
+      setMessage("Veuillez compléter la date de l'événement");
     } else if (description === "") {
-      setMessage("Please complete the Description");
+      setMessage("Veuillez compléter la description");
     } else if (place === "") {
-      setMessage("Please complete the Place");
+      setMessage("Veuillez compléter le lieu");
     } else if (maxInvitation === "" || maxInvitation < 1) {
-      setMessage("Please complete the Max Invitation");
+      setMessage("Veuillez vérifier le nombre de places");
+    } else if (images.length == 0) {
+      setMessage("Veuillez ajouter une affiche");
     } else {
+      formdatastate.append("titre", titre);
+      formdatastate.append("description", description);
+      formdatastate.append("date", date);
+      formdatastate.append("temps_debut", debut);
+      formdatastate.append("temps_fin", fin);
+      formdatastate.append("lieu", place);
+      formdatastate.append("max_invitation", maxInvitation);
       axios
-        .post(ADD_SALON_URL, {
-          titre: titre,
-          description: description,
-          date: date,
-          temps_debut: debut,
-          temps_fin: fin,
-          lieu: place,
-          max_invitation: maxInvitation,
-        })
+        .post(ADD_SALON_URL, formdatastate)
         .then((response) => {
           if (response.data.titre != null && response.data.titre != undefined) {
             navigate("/adminsalonlist");
@@ -81,7 +94,7 @@ const AdminSalonAdd = () => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Add Salon</h4>
+                    <h4>Ajouter un Salon</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <NavLink to="/admindashboard">
@@ -93,7 +106,9 @@ const AdminSalonAdd = () => {
                           <a>Salons</a>
                         </NavLink>
                       </li>
-                      <li className="breadcrumb-item active">Add Salon</li>
+                      <li className="breadcrumb-item active">
+                        Ajouter un Salon
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -122,9 +137,11 @@ const AdminSalonAdd = () => {
                       >
                         <div className=" twitter-bs-wizard-tab-content">
                           <div className="tab-pane" id="basic-info">
-                            <h4 className="header-title">Basic Information</h4>
+                            <h4 className="header-title">
+                              Informations de base
+                            </h4>
                             <p className="card-title-desc">
-                              Fill all information below
+                              Remplissez toutes les informations ci-dessous
                             </p>
 
                             <form>
@@ -133,7 +150,7 @@ const AdminSalonAdd = () => {
                                   className="form-label"
                                   htmlFor="productname"
                                 >
-                                  Salon Title
+                                  Titre du Salon
                                 </label>
                                 <input
                                   className="form-control"
@@ -153,7 +170,7 @@ const AdminSalonAdd = () => {
                                       className="form-label"
                                       htmlFor="manufacturername"
                                     >
-                                      Start Time
+                                      Heure de début
                                     </label>
                                     <input
                                       className="form-control"
@@ -173,7 +190,7 @@ const AdminSalonAdd = () => {
                                       className="form-label"
                                       htmlFor="manufacturerbrand"
                                     >
-                                      End Time
+                                      Heure de fin
                                     </label>
                                     <input
                                       className="form-control"
@@ -214,7 +231,7 @@ const AdminSalonAdd = () => {
                                   className="form-label"
                                   htmlFor="productdesc"
                                 >
-                                  Salon Description
+                                  Description du salon
                                 </label>
                                 <textarea
                                   className="form-control"
@@ -235,7 +252,7 @@ const AdminSalonAdd = () => {
                                   className="form-label"
                                   htmlFor="manufacturerbrand"
                                 >
-                                  Place
+                                  Lieu
                                 </label>
                                 <input
                                   className="form-control"
@@ -255,7 +272,7 @@ const AdminSalonAdd = () => {
                                   className="form-label"
                                   htmlFor="manufacturerbrand"
                                 >
-                                  Max Invitation
+                                  Nombre Maximale des Invités
                                 </label>
                                 <input
                                   className="form-control"
@@ -271,6 +288,97 @@ const AdminSalonAdd = () => {
                               </div>
                             </div>
                           </div>
+
+                          <div className="tab-pane" id="product-img">
+                            <h4 className="header-title">Affiche</h4>
+                            <p className="card-title-desc">
+                              Importer l'affiche du salon
+                            </p>
+                            <br />
+                          </div>
+                          <ImageUploading
+                            single
+                            value={images}
+                            onChange={onChange}
+                            dataURLKey="data_url"
+                          >
+                            {({
+                              imageList,
+                              onImageUpload,
+                              onImageRemoveAll,
+                              onImageUpdate,
+                              onImageRemove,
+                              isDragging,
+                              dragProps,
+                            }) => (
+                              // write your building UI
+                              <>
+                                <div
+                                  className="upload__image-wrapper dropzone d-flex justify-content-center align-items-center text-center"
+                                  onClick={onImageUpload}
+                                  {...dragProps}
+                                  style={
+                                    isDragging ? { color: "red" } : undefined
+                                  }
+                                >
+                                  <div className="dz-message needsclick">
+                                    <div className="mb-3">
+                                      <i className="display-4 text-muted mdi mdi-cloud-download-outline"></i>
+                                    </div>
+
+                                    <h4>
+                                      Déposez les fichiers ici ou cliquez pour
+                                      télécharger.
+                                    </h4>
+                                  </div>
+                                </div>
+
+                                <div className="selected-images-container text-center w-100  d-flex p-3">
+                                  <div className="row">
+                                    {imageList.map((image, index) => (
+                                      <div className="col-2" key={index}>
+                                        <div
+                                          className="image-item"
+                                          style={{
+                                            width: 120,
+                                            height: 120,
+                                            paddingTop: 10,
+                                            position: "relative",
+                                          }}
+                                        >
+                                          <i
+                                            className="mdi mdi-progress-close"
+                                            style={{
+                                              color: "red",
+                                              fontSize: 25,
+                                              position: "absolute",
+                                              right: -12,
+                                              top: -11,
+                                              cursor: "pointer",
+                                            }}
+                                            onClick={() => onImageRemove(index)}
+                                          ></i>
+                                          <div className="shake-admin">
+                                            <img
+                                              className="image-admin-shake"
+                                              style={{
+                                                borderRadius: 15,
+                                                width: 100,
+                                                height: 100,
+                                                border: "1px solid red",
+                                              }}
+                                              src={image["data_url"]}
+                                              alt=""
+                                            />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </>
+                            )}
+                          </ImageUploading>
                           <div
                             style={{
                               fontSize: 15,
@@ -292,7 +400,7 @@ const AdminSalonAdd = () => {
                                     fetchAddSalon();
                                   }}
                                 >
-                                  Save Changes{" "}
+                                  Sauvegarder les modifications{" "}
                                   <i className="mdi mdi-arrow-right ml-1"></i>
                                 </a>
                               </li>

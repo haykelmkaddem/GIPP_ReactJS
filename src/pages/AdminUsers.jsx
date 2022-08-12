@@ -227,14 +227,14 @@ const AdminUsers = () => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Users</h4>
+                    <h4>Utilisateurs</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <NavLink to="/admindashboard">
                           <a>GIPP</a>
                         </NavLink>
                       </li>
-                      <li className="breadcrumb-item active">Users</li>
+                      <li className="breadcrumb-item active">Utilisateurs</li>
                     </ol>
                   </div>
                 </div>
@@ -288,13 +288,13 @@ const AdminUsers = () => {
                             <thead className="thead-light">
                               <tr>
                                 <th>Document</th>
-                                <th>LastName</th>
-                                <th>FirstName</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
                                 <th>Email</th>
-                                <th>Phone</th>
-                                <th>Company Name</th>
-                                <th>Address</th>
-                                <th>Country</th>
+                                <th>Téléphone</th>
+                                <th>Nom de l'entreprise</th>
+                                <th>Addresse</th>
+                                <th>Pays</th>
                                 <th>Action</th>
                               </tr>
                             </thead>

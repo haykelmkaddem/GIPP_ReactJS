@@ -159,7 +159,8 @@ const AdminSalonList = () => {
                             className="btn btn-success mb-2"
                             style={{ color: "white" }}
                           >
-                            <i className="mdi mdi-plus me-2"></i> Add Salon
+                            <i className="mdi mdi-plus me-2"></i> Ajouter un
+                            salon
                           </a>
                         </NavLink>
                       </div>
@@ -183,14 +184,14 @@ const AdminSalonList = () => {
                           >
                             <thead className="thead-light">
                               <tr>
-                                <th>Title</th>
+                                <th>Titre</th>
                                 <th>Date</th>
-                                <th>Start Time</th>
-                                <th>End Time</th>
-                                <th>Place</th>
-                                <th>Max Invitation</th>
+                                <th>Heure de début</th>
+                                <th>Heure de fin</th>
+                                <th>Lieu</th>
+                                <th>Maximum d'invitations</th>
                                 <th>Action</th>
-                                <th>Details</th>
+                                <th>Détails</th>
                               </tr>
                             </thead>
                             <tbody>

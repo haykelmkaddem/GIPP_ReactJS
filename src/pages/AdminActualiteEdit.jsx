@@ -82,7 +82,7 @@ const AdminActualiteEdit = () => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Edit Actuality</h4>
+                    <h4>Modifier l'actualité</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <NavLink to="/admindashboard">
@@ -91,11 +91,11 @@ const AdminActualiteEdit = () => {
                       </li>
                       <li className="breadcrumb-item">
                         <NavLink to="/adminactualitelist">
-                          <a>Actualities</a>
+                          <a>Actualités</a>
                         </NavLink>
                       </li>
                       <li className="breadcrumb-item active">
-                        Edit Actualities
+                        Modifier l'actualité
                       </li>
                     </ol>
                   </div>
@@ -135,10 +135,10 @@ const AdminActualiteEdit = () => {
                           <div className=" twitter-bs-wizard-tab-content">
                             <div className="tab-pane" id="basic-info">
                               <h4 className="header-title">
-                                Basic Information
+                                Informations de base
                               </h4>
                               <p className="card-title-desc">
-                                Fill all information below
+                                Remplissez toutes les informations ci-dessous
                               </p>
 
                               <form>
@@ -147,7 +147,7 @@ const AdminActualiteEdit = () => {
                                     className="form-label"
                                     htmlFor="productname"
                                   >
-                                    Actuality Title
+                                    Titre d'actualité
                                   </label>
                                   <input
                                     id="productname"
@@ -167,7 +167,7 @@ const AdminActualiteEdit = () => {
                                     className="form-label"
                                     htmlFor="productdesc"
                                   >
-                                    Product Description
+                                    Description de l'actualité
                                   </label>
                                   <textarea
                                     className="form-control"
@@ -187,9 +187,11 @@ const AdminActualiteEdit = () => {
                               </form>
                             </div>
                             <div className="tab-pane" id="product-img">
-                              <h4 className="header-title">Product Images</h4>
+                              <h4 className="header-title">
+                                Image de l'actualité
+                              </h4>
                               <p className="card-title-desc">
-                                Upload product image
+                                Importer l'image de l'actualité
                               </p>
                               <br />
                             </div>
@@ -224,7 +226,8 @@ const AdminActualiteEdit = () => {
                                       </div>
 
                                       <h4>
-                                        Drop files here or click to upload.
+                                        Déposez les fichiers ici ou cliquez pour
+                                        télécharger.
                                       </h4>
                                     </div>
                                   </div>
@@ -274,46 +277,49 @@ const AdminActualiteEdit = () => {
                                       ))}
                                     </div>
                                   </div>
-                                  <div className="selected-images-container text-center w-100  d-flex p-3">
-                                    <div className="row">
-                                      <div className="col-2">
-                                        <div
-                                          className="image-item"
-                                          style={{
-                                            width: 120,
-                                            height: 120,
-                                            paddingTop: 10,
-                                            position: "relative",
-                                          }}
-                                        >
-                                          <i
-                                            className="mdi mdi-progress-close"
+                                  {images.length == 0 && (
+                                    <div className="selected-images-container text-center w-100  d-flex p-3">
+                                      <div className="row">
+                                        <div className="col-2">
+                                          <div
+                                            className="image-item"
                                             style={{
-                                              color: "red",
-                                              fontSize: 25,
-                                              position: "absolute",
-                                              right: -12,
-                                              top: -11,
-                                              cursor: "pointer",
+                                              width: 120,
+                                              height: 120,
+                                              paddingTop: 10,
+                                              position: "relative",
                                             }}
-                                          ></i>
-                                          <div className="shake-admin">
-                                            <img
-                                              className="image-admin-shake"
+                                          >
+                                            <i
+                                              className="mdi mdi-progress-close"
                                               style={{
-                                                borderRadius: 15,
-                                                width: 100,
-                                                height: 100,
-                                                border: "1px solid red",
+                                                color: "red",
+                                                fontSize: 25,
+                                                position: "absolute",
+                                                right: -12,
+                                                top: -11,
+                                                cursor: "pointer",
                                               }}
-                                              src={`http://127.0.0.1:8000/uploads/${dataImage}`}
-                                              alt=""
-                                            />
+                                            ></i>
+
+                                            <div className="shake-admin">
+                                              <img
+                                                className="image-admin-shake"
+                                                style={{
+                                                  borderRadius: 15,
+                                                  width: 100,
+                                                  height: 100,
+                                                  border: "1px solid red",
+                                                }}
+                                                src={`http://127.0.0.1:8000/uploads/${dataImage}`}
+                                                alt=""
+                                              />
+                                            </div>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
+                                  )}
                                 </>
                               )}
                             </ImageUploading>
@@ -328,7 +334,7 @@ const AdminActualiteEdit = () => {
                                       fetchActualityUpdate();
                                     }}
                                   >
-                                    Save Changes{" "}
+                                    Sauvegarder les modifications{" "}
                                     <i className="mdi mdi-arrow-right ml-1"></i>
                                   </a>
                                 </li>

@@ -172,7 +172,7 @@ const AdminProductDetails = ({ route, navigation }) => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Product Details</h4>
+                    <h4>Détails du produit</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <NavLink to="/admindashboard">
@@ -181,11 +181,11 @@ const AdminProductDetails = ({ route, navigation }) => {
                       </li>
                       <li className="breadcrumb-item">
                         <NavLink to="/adminproducts">
-                          <a>Products</a>
+                          <a>Liste des produits</a>
                         </NavLink>
                       </li>
                       <li className="breadcrumb-item active">
-                        Product Details
+                        Détails du produit
                       </li>
                     </ol>
                   </div>
@@ -356,9 +356,9 @@ const AdminProductDetails = ({ route, navigation }) => {
                                   )}
 
                                   {productDetails.discount == null ? (
-                                    <>{productDetails.prix}Dt </>
+                                    <>{productDetails.prix}TND </>
                                   ) : (
-                                    <>{productDetails.discount}Dt</>
+                                    <>{productDetails.discount}TND</>
                                   )}
 
                                   {productDetails.discount !== null && (
@@ -393,7 +393,7 @@ const AdminProductDetails = ({ route, navigation }) => {
                                     onClick={() => AlertSupp()}
                                   >
                                     <i className="mdi mdi-delete me-2"></i>{" "}
-                                    Delete From Store
+                                    Supprimer ce produit
                                   </button>
                                 </div>
 
@@ -412,7 +412,7 @@ const AdminProductDetails = ({ route, navigation }) => {
                                       className="font-size-14"
                                       style={{ height: "auto" }}
                                     >
-                                      Price :
+                                      Prix :
                                     </h5>
                                     <p>{productDetails.prix}</p>
                                   </div>
@@ -445,7 +445,7 @@ const AdminProductDetails = ({ route, navigation }) => {
 
                   <div className="card">
                     <div className="card-body">
-                      <h4 className="header-title mb-4">Reviews : </h4>
+                      <h4 className="header-title mb-4">Avis : </h4>
                       {isLoadingAvis && (
                         <div
                           style={{ height: 300 }}
@@ -465,7 +465,7 @@ const AdminProductDetails = ({ route, navigation }) => {
                             />
                           </div>
                           <div className="text-muted">
-                            ( {moyenCusmers} customer Review)
+                            ( {moyenCusmers} Avis client)
                           </div>
                         </div>
                       )}

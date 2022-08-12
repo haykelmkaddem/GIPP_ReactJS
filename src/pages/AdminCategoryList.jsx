@@ -123,14 +123,14 @@ const AdminCategoryList = () => {
               <div class="row align-items-center">
                 <div class="col-sm-6">
                   <div class="page-title">
-                    <h4>Categories</h4>
+                    <h4>Liste des Categories</h4>
                     <ol class="breadcrumb m-0">
                       <li class="breadcrumb-item">
                         <NavLink to="/admindashboard">
                           <a>GIPP</a>
                         </NavLink>
                       </li>
-                      <li class="breadcrumb-item active">Categories</li>
+                      <li class="breadcrumb-item active">Liste des Categories</li>
                     </ol>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ const AdminCategoryList = () => {
             <div>
               <NavLink to="/admincategoryadd">
                 <a class="btn btn-success mb-2" style={{ color: "white" }}>
-                  <i class="mdi mdi-plus me-2"></i> Add Category
+                  <i class="mdi mdi-plus me-2"></i> Ajouter une catégorie
                 </a>
               </NavLink>
             </div>
@@ -184,7 +184,7 @@ const AdminCategoryList = () => {
                 >
                   <thead class="thead-light">
                     <tr>
-                      <th>Category Name</th>
+                      <th>Nom de catégorie</th>
                       <th style={{ width: 180 }}>Action</th>
                     </tr>
                   </thead>

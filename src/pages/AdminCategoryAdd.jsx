@@ -47,7 +47,7 @@ const AdminCategoryAdd = () => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Add Category</h4>
+                    <h4>Ajouter une catégorie</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <NavLink to="/admindashboard">
@@ -59,7 +59,9 @@ const AdminCategoryAdd = () => {
                           <a>Categories</a>
                         </NavLink>
                       </li>
-                      <li className="breadcrumb-item active">Add Category</li>
+                      <li className="breadcrumb-item active">
+                        Ajouter une catégorie
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -88,9 +90,11 @@ const AdminCategoryAdd = () => {
                       >
                         <div className=" twitter-bs-wizard-tab-content">
                           <div className="tab-pane" id="basic-info">
-                            <h4 className="header-title">Basic Information</h4>
+                            <h4 className="header-title">
+                              Informations de base
+                            </h4>
                             <p className="card-title-desc">
-                              Fill all information below
+                              Remplissez toutes les informations ci-dessous
                             </p>
 
                             <form>
@@ -99,7 +103,7 @@ const AdminCategoryAdd = () => {
                                   className="form-label"
                                   htmlFor="productname"
                                 >
-                                  Category Name
+                                  Nom de catégorie
                                 </label>
                                 <input
                                   id="productname"
@@ -134,7 +138,7 @@ const AdminCategoryAdd = () => {
                                     fetchAddCategory();
                                   }}
                                 >
-                                  Save Changes
+                                  Sauvegarder les modifications{" "}
                                   <i className="mdi mdi-arrow-right ml-1"></i>
                                 </a>
                               </li>

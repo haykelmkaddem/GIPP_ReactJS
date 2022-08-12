@@ -78,7 +78,7 @@ const AdminSalonDetails = () => {
               <div className="row align-items-center">
                 <div className="col-sm-6">
                   <div className="page-title">
-                    <h4>Salon Details</h4>
+                    <h4>Détails du salon</h4>
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
                         <NavLink to="/admindashboard">
@@ -90,7 +90,9 @@ const AdminSalonDetails = () => {
                           <a>Salons</a>
                         </NavLink>
                       </li>
-                      <li className="breadcrumb-item active">Salon Details</li>
+                      <li className="breadcrumb-item active">
+                        Détails du salon
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -154,7 +156,7 @@ const AdminSalonDetails = () => {
                                     marginBottom: 15,
                                   }}
                                 />
-                                <h4>Time</h4>
+                                <h4>Temps</h4>
                                 <p>
                                   {salonDetails.temps_debut.substr(11, 5)}
                                   {"-"}
@@ -198,7 +200,7 @@ const AdminSalonDetails = () => {
                                     marginBottom: 15,
                                   }}
                                 />
-                                <h4>Place</h4>
+                                <h4>Lieu</h4>
                                 <p>{salonDetails.lieu}</p>
                               </span>
                             </div>
@@ -215,7 +217,9 @@ const AdminSalonDetails = () => {
                             flexDirection: "column",
                           }}
                         >
-                          <h3 style={{ fontSize: 30 }}>Accepted Invitations</h3>
+                          <h3 style={{ fontSize: 30 }}>
+                            Invitations Acceptées
+                          </h3>
                           <p style={{ fontSize: 18 }}>
                             {invitations}/{salonDetails.max_invitation}
                           </p>
@@ -241,7 +245,7 @@ const AdminSalonDetails = () => {
                                   fontSize: 25,
                                 }}
                               >
-                                There is not Reservations
+                                Pas de réservations
                               </p>
                             ) : (
                               <div className="table-responsive mt-3">
@@ -255,12 +259,12 @@ const AdminSalonDetails = () => {
                                 >
                                   <thead className="thead-light">
                                     <tr>
-                                      <th>Last Name</th>
-                                      <th>First Name</th>
+                                      <th>Nom</th>
+                                      <th>Prénom</th>
                                       <th>Email</th>
-                                      <th>Phone</th>
-                                      <th>Company</th>
-                                      <th>Status</th>
+                                      <th>Téléphone</th>
+                                      <th>Entreprise</th>
+                                      <th>Statut</th>
                                     </tr>
                                   </thead>
                                   <tbody>
